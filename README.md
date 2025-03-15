@@ -70,8 +70,8 @@ Share your moments and vibes!
 
 
 # Database Schema
+![alt text](images/db%20schema/image.png)
 
-![alt text](image.png)
 
 - renamed vibe table to => mood
 - renamed image table to -> vibe
@@ -111,34 +111,34 @@ user_id integer > fk references user.user_id
 # Wireframes
 
 ## Not logged in user viewing Landing page
-![alt text](image-2.png)
+![alt text](images/wireframes/image-2.png)
 
 ## Logged in user viewing Landing page
-![alt text](image-1.png)
+![alt text](images/wireframes/image-1.png)
 
 ## Logged out user viewing Vibes
-![alt text](image-4.png)
+![alt text](images/wireframes/image-4.png)
 
 ## Logged in user viewing Vibes
-![alt text](image-5.png)
+![alt text](images/wireframes/image-5.png)
 
 ## Logged in user my vibes page
-![alt text](image-6.png)
+![alt text](images/wireframes/image-6.png)
 
 ## Logged out user Vibe page 
-![alt text](image-8.png)
+![alt text](images/wireframes/image-8.png)
 
 ## Logged in user Vibe page 
-![alt text](image-11.png)
+![alt text](images/wireframes/image-11.png)
 
 ## Logged in user Comment form
-![alt text](image-10.png)
+![alt text](images/wireframes/image-10.png)
 
 ## Logged in user edit Comment form
 ![alt text](images/wireframes/editcomment.png)
 
 ## Logged in user upload a vibe
-![alt text](image-3.png)
+![alt text](images/wireframes/image-3.png)
 
 ## Logged in user edit a vibe
 ![alt text](images/wireframes/edit.png)
