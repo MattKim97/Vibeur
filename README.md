@@ -18,24 +18,24 @@ Share your moments and vibes!
 ### Profile Management
 - Users can update their profile picture.
 
-## Image
+## Vibes
 
-### Upload image
-- Logged in users can upload an image with a title, description, vibe song URL, and vibe.
+### Upload Vibe
+- Logged in users can upload an vibe with a title, description, vibe song URL, and vibe.
 - Upload date and user ID are automatically recorded.
-- If you are not logged in, do not allow creation of image
+- If you are not logged in, do not allow creation of vibe
 
-### Image Viewing
+### Vibe Viewing
 
-- Users can browse uploaded images, view titles, descriptions, and listen to associated mood songs.
+- Users can browse uploaded vibes, view titles, descriptions, and listen to associated Vibe songs.
 
-- Images can be filtered or sorted by upload date uploaded, vibe, likes, user's images.
+- vibes can be filtered or sorted by upload date uploaded, vibe, likes, user's vibes.
 
 - Anyone can view whether logged in or not.
 
-### Image Management
+### Vibe Management
 
-- Logged in users can delete or edit their own uploaded images (title, description).
+- Logged in users can delete or edit their own uploaded vibes (title, description).
 
 
 ## Likes
@@ -73,33 +73,78 @@ Share your moments and vibes!
 
 ![alt text](image.png)
 
+- renamed vibe table to => mood
+- renamed image table to -> vibe
+
 ### User Table
 - user_id integer pk increments unique
 - username text
 - password text
 - user_image_url text null
 
+### Mood Table
+- mood_id integer pk increments unique
+- mood_name text
+
 ### Vibe Table
 - vibe_id integer pk increments unique
-- vibe_name text
-
-### Image Table
-- image_id integer pk increments unique
 - title text
 - description text
-- image_url text
-- image_song text
+- vibe_url text
+- vibe_song text
 - date_uploaded datetime
 - user_id integer > fk references user.user_id
-- vibe_id integer > fk references vibe.vibe_id
+- mood_id integer > fk references mood.mood_id
 
 ### Comment Table
 - comment_id integer pk increments unique
 - content text
 - user_id integer > fk references user.user_id
-- image_id integer > fk references image.image_id
+- vibe_id integer > fk references vibe.vibe_id
 
 ### Like Table
 like_id integer pk increments unique
-image_id integer > fk references image.image_id
+vibe_id integer > fk references vibe.vibe_id
 user_id integer > fk references user.user_id
+
+
+# Wireframes
+
+## Not logged in user viewing Landing page
+![alt text](image-2.png)
+
+## Logged in user viewing Landing page
+![alt text](image-1.png)
+
+## Logged out user viewing Vibes
+![alt text](image-4.png)
+
+## Logged in user viewing Vibes
+![alt text](image-5.png)
+
+## Logged in user my vibes page
+![alt text](image-6.png)
+
+## Logged out user Vibe page 
+![alt text](image-8.png)
+
+## Logged in user Vibe page 
+![alt text](image-11.png)
+
+## Logged in user Comment form
+![alt text](image-10.png)
+
+## Logged in user edit Comment form
+![alt text](images/wireframes/editcomment.png)
+
+## Logged in user upload a vibe
+![alt text](image-3.png)
+
+## Logged in user edit a vibe
+![alt text](images/wireframes/edit.png)
+
+## Login
+![alt text](images/wireframes/login.png)
+
+## Signup
+![alt text](images/wireframes/signup.png)
