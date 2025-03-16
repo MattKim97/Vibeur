@@ -72,10 +72,6 @@ Share your moments and vibes!
 # Database Schema
 ![alt text](images/db%20schema/image.png)
 
-
-- renamed vibe table to => mood
-- renamed image table to -> vibe
-
 ### User Table
 - user_id integer pk increments unique
 - username text
