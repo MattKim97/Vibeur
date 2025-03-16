@@ -148,3 +148,184 @@ user_id integer > fk references user.user_id
 
 ## Signup
 ![alt text](images/wireframes/signup.png)
+
+# Technology Stack
+## Backend
+- Java
+- Spring
+- JDBC Client
+- MySQL
+- BCrypt
+- AWS S3 and Lambda
+## Frontend
+- React
+- JSX
+- Howler.JS
+- AudioMotion
+- GSAC animation library
+
+# HTTP Endpoints
+
+## Users
+### GET /api/users/:userId/myVibes
+- returns a list of vibes associated with this user Id
+
+### GET /api/users/:userId/comments
+- returns a list of comments associated with this user Id
+
+### GET /api/users/:userId/likes
+- returns a list of likes associated with this user Id
+
+### PUT /api/users/:userId
+- edit a user's profile picture associated with this user Id
+
+## Vibes
+### GET /api/vibes
+- returns a list of all vibes
+
+
+### GET /api/vibes/:vibeId
+- returns a singular vibe associated with this vibe Id
+
+### GET /api/vibes/:vibeId/comments
+- returns a list of comments associated with this vibe Id
+
+### GET /api/vibes/:vibeId/likes
+- returns a list of likes associated with this vibe Id
+
+### POST /api/vibes
+- upload a vibe
+
+### POST /api/vibes/:vibeId/likes
+- create a like associated with this vibe Id and user Id from auth header
+
+### PUT /api/vibes/:vibeId
+- edit a vibe with the associated vibe Id
+
+### DELETE /api/vibes/:vibeId
+- delete a vibe with the associated vibe Id
+
+## Comments
+### GET /api/comments/:commentId
+- returns a singular comment associated with this commentId
+
+### POST /api/comments/:commentId
+- create a comment associated with this commentId
+
+### PUT /api/comments/:commentId
+- edit a comment associated with this commentId
+
+### DELETE /api/comments/:commentId
+- delete a comment associated with this commentId
+
+## Likes
+### GET /api/likes
+- returns a list of all likes
+
+# Frontend components tree diagram
+![alt text](images/components/frontend-components.png)
+
+# Backend class and member inventory
+
+## Mappers
+- UserMapper
+- VibeMapper
+- CommentMapper
+- LikeMapper
+- MoodMapper
+
+## Models
+
+### User
+- int userId
+- String username
+- String password
+- String profilePictureLink
+
+### Mood
+- int moodId
+- String moodName
+
+### Vibe
+- int vibeId
+- String title
+- String description
+- String imageURL
+- String songURL
+- Date uploadDate
+- Mood mood
+- User user
+
+### Comment
+- int commentId
+- String content
+- User user
+- Date createdDate 
+- boolean isEdited
+- int vibeId
+
+### Like
+- int likeId
+- int userId
+- int vibeId
+
+## Repositories
+
+### Users 
+- findById returns a User
+- existsByUsername(String username)
+- create returns a User
+- edit edits a User (only profile picture url)
+
+### Vibes
+- findById returns a Vibe
+- findByUserId returns a List of Vibe
+- create returns a Vibe
+- edit edits a Vibe
+- deleteById deletes a vibe
+
+### Comments
+- findById returns a comment
+- findByVibeId returns a List of Comment
+- create returns a comment
+- edit edits a comment
+- deleteById deletes a comment
+
+### Like
+- findAll returns a List of Like
+- findByPostId returns a List of Like
+- findByUserId returns a List of Like
+- existsByUserIdAndVibeId boolean 
+- deleteByUserIdAndVibeId deletes a like -> (Unlike)
+
+## Service
+
+
+### Users 
+- findById returns a User
+- create returns a Result<User>
+- edit returns a Result<User>
+- validate(checks for duplicate user names and nulls) returns a Result<User>
+
+### Vibes
+- findById returns a Vibe
+- findByUserId returns a List of Vibe
+- create returns a Result<Vibe>
+- edit returns a Result<Vibe>
+- deleteById returns a Result<Vibe>
+- validate (just checks for nulls) returns a Result<Vibe>
+
+### Comments
+- findById returns a comment
+- findByVibeId returns a List of Comment
+- create returns a Result<Comment>
+- edit returns a Result<Comment>
+- deleteById returns a Result<Comment>
+- validate (just checks for nulls) returns a Result<Comment>
+
+### Like
+- findAll returns a List of Like
+- findByPostId returns a List of Like
+- findByUserId returns a List of Like
+- validate(checks to see if already liked) returns a Result<Like>
+- deleteByUserIdAndVibeId returns a Result<Like>
