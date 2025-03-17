@@ -52,7 +52,7 @@ class UserJdbcClientRepositoryTest {
                 assertEquals(1,user.getUserId());
                 assertEquals("user1",user.getUsername());
                 assertEquals("password1",user.getPassword());
-                assertNull(user.getUserImageUrl());
+                assertEquals("test",user.getUserImageUrl());
             }
 
 
@@ -63,7 +63,7 @@ class UserJdbcClientRepositoryTest {
                 assertEquals(1,user.getUserId());
                 assertEquals("user1",user.getUsername());
                 assertEquals("password1",user.getPassword());
-                assertNull(user.getUserImageUrl());
+                assertEquals("test",user.getUserImageUrl());
             }
 
             @Test

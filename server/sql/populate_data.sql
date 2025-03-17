@@ -18,9 +18,9 @@ insert into mood(mood_name) values('relaxed');
 insert into mood(mood_name) values('excited');
 
 insert into `user`(username, userImageUrl, `password`) values
-('user1', "https://vibeur.s3.us-west-1.amazonaws.com/iStock-1232014586.jpg" , 'password1'),
-('user2', null , 'password2'),
-('user3', null , 'password3'),
+('user1', "https://vibeur.s3.us-west-1.amazonaws.com/iStock-1232014586.jpg" , '$2a$12$UdGkEgH6zB/Ws7fRs6DlZO1xgtjczIc7a6yCs43qANeB2zsE20cRK'),
+('user2', null , '$2a$12$UdGkEgH6zB/Ws7fRs6DlZO1xgtjczIc7a6yCs43qANeB2zsE20cRK'),
+('user3', null , '$2a$12$UdGkEgH6zB/Ws7fRs6DlZO1xgtjczIc7a6yCs43qANeB2zsE20cRK'),
 ('user4', null , 'password4'),
 ('user5', null , 'password5'),
 ('user6', null , 'password6'),
