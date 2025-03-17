@@ -166,12 +166,6 @@ user_id integer > fk references user.user_id
 ### GET /api/users/:userId/myVibes
 - returns a list of vibes associated with this user Id
 
-### GET /api/users/:userId/comments
-- returns a list of comments associated with this user Id
-
-### GET /api/users/:userId/likes
-- returns a list of likes associated with this user Id
-
 ### PUT /api/users/:userId
 - edit a user's profile picture associated with this user Id
 
@@ -185,6 +179,9 @@ user_id integer > fk references user.user_id
 
 ### GET /api/vibes/:vibeId/comments
 - returns a list of comments associated with this vibe Id
+
+### POST /api/vibes/:vibeId/comments
+- create a comment associated with this vibe Id
 
 ### GET /api/vibes/:vibeId/likes
 - returns a list of likes associated with this vibe Id
@@ -205,8 +202,6 @@ user_id integer > fk references user.user_id
 ### GET /api/comments/:commentId
 - returns a singular comment associated with this commentId
 
-### POST /api/comments/:commentId
-- create a comment associated with this commentId
 
 ### PUT /api/comments/:commentId
 - edit a comment associated with this commentId
