@@ -11,7 +11,6 @@ import org.springframework.jdbc.core.simple.JdbcClient;
 
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
-
 class UserJdbcClientRepositoryTest {
 
     @Autowired

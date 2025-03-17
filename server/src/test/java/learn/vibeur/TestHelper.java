@@ -1,5 +1,6 @@
 package learn.vibeur;
 
+import learn.vibeur.models.Mood;
 import learn.vibeur.models.User;
 
 public class TestHelper {
@@ -8,4 +9,7 @@ public class TestHelper {
         return new User(1,"testUserName","testPassword", null);
     }
 
+    public static Mood makeMood(){
+        return new Mood(1,"testMood");
+    }
 }
