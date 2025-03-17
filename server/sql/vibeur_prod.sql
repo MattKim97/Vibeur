@@ -47,4 +47,7 @@ create table `like`(
     constraint unique_like unique(user_id, vibe_id)
 );
 
-select * from vibe
+select * from vibe;
+select * from `comment`;
+select * from `like`;
+select * from `user`;

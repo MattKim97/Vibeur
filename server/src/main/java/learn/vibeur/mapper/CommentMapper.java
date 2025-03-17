@@ -17,7 +17,7 @@ public class CommentMapper implements RowMapper<Comment> {
         Comment comment = new Comment();
         comment.setCommentId(rs.getInt("comment_id"));
         comment.setComment(rs.getString("content"));
-        comment.setCreatedDate(rs.getTimestamp("createdDate").toLocalDateTime());
+        comment.setCreatedDate(rs.getTimestamp("dateCreated").toLocalDateTime());
         comment.setEdited(rs.getBoolean("isEdited"));
         comment.setUser(user);
         comment.setVibeId(rs.getInt("vibe_id"));

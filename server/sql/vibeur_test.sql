@@ -71,19 +71,19 @@ insert into mood(mood_name) values('relaxed');
 insert into mood(mood_name) values('excited');
 
 insert into `user`(username, userImageUrl, `password`) values
-('user1', null , 'password1'),
+('user1', "test" , 'password1'),
 ('user2', null , 'password2'),
 ('user3', null , 'password3');
 
 insert into vibe(title, `description`, imageUrl, songUrl, dateUploaded, user_id, mood_id) values
-('title1', 'description1', 'imageUrl1', 'songUrl1', '2021-01-01', 1, 1),
-('title2', 'description2', 'imageUrl2', 'songUrl2', '2021-01-02', 2, 2),
-('title3', 'description3', 'imageUrl3', 'songUrl3', '2021-01-03', 3, 3);
+('title1', 'description1', 'imageUrl1', 'songUrl1', '2021-01-01-10-10-10', 1, 1),
+('title2', 'description2', 'imageUrl2', 'songUrl2', '2021-01-02-15-15-15', 2, 2),
+('title3', 'description3', 'imageUrl3', 'songUrl3', '2021-01-03-20-20-20', 3, 3);
 
 insert into `comment`(content, dateCreated, isEdited, user_id, vibe_id) values
-('content1', '2021-01-01', false, 1, 1),
-('content2', '2021-01-02', false, 2, 2),
-('content3', '2021-01-03', false, 3, 3);
+('content1', '2021-01-01-01-01-01', false, 1, 1),
+('content2', '2021-02-02-02-02-02', false, 2, 2),
+('content3', '2021-03-03-03-03-03', false, 3, 3);
 
 insert into `like`(user_id, vibe_id) values
 (3, 1),

@@ -69,6 +69,10 @@ class VibeJdbcClientRepositoryTest {
         @Test
         void shouldFindAll(){
             assertEquals(3,repository.findAll().size());
+
+            for (Vibe vibe : repository.findAll()) {
+                System.out.println(vibe);
+            }
         }
 
 
