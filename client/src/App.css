@@ -63,7 +63,7 @@ html {
 }
 
 .spacing_landing_top{
-  margin-top: 25%;
+  margin-top: 20%;
 }
 
 .spacing_landing{
@@ -75,14 +75,53 @@ html {
 }
 
 .width_landing{
-  width: 65%;
+  width: 95%;
+  column-gap: 5%;
 }
 
 
 .image_navbar{
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border: 1px solid black;
   border-radius: 75%;
   object-fit: cover;
+}
+
+
+.image_logo_navbar{
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+
+.error{
+  color: red;
+}
+
+.margin_right_landing{
+  margin-right: 5%;
+}
+
+.image_landing{
+  width: 450px;
+  height: 450px;
+  object-fit: cover;
+}
+
+.navbar_bg_color{
+  background-color: #CCE0CC;
+}
+
+.edit_profile_image{
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 75%;
+}
+
+.edit_profile_border{
+  margin-top: 2%;
+  border: 1px solid black;
+  padding: 5% 3%;
 }

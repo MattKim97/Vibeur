@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import filesImg from '../images/original-e2df00f86517ac7590d349f596c6b521.gif';
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,7 +14,7 @@ const Landing = () => {
 
     useEffect(() => {
 
-        gsap.set("body", { backgroundColor: '#A6C9A6' });
+        gsap.set("body", { backgroundColor: '#74AA74' });
 
         gsap.to("body", {
             backgroundColor: '#A6C9A6', // whitesmoke
@@ -57,7 +59,7 @@ const Landing = () => {
                     ease: 'power2.out',
                     scrollTrigger: {
                         trigger: element,
-                        start: 'top 70%',
+                        start: 'top 80%',
                         end: 'top 30%',
                         toggleActions: 'play none none none',
                     }
@@ -77,12 +79,12 @@ const Landing = () => {
                 Welcome to Vibeur!
             </h1>
 
-            <p
-                ref={paragraphRef}
-                className='display-6 width_landing spacing_landing lead'
-            >
-                Vibeur is an app that displays a new way of sharing how your vibes are at the moment! Vibeur offers a unique blend of visual storytelling with vibe-based music integrations. Vibeur allows users to express their emotions and creativity, find inspiration, connections, and comfort within the Vibeur community!
+            <div className='display-6 width_landing spacing_landing lead gap-1 d-flex flex-row align-items-center justify-content-center' ref={paragraphRef}>
+            <p className='margin_right_landing'>
+                Vibeur is an app that displays a new way of sharing what you are feeling at the moment! Vibeur offers a unique blend of visual storytelling with vibe-based music integrations. Vibeur allows users to express their emotions and creativity, find inspiration, connections, and comfort within the Vibeur community!
             </p>
+            <img src={filesImg} alt='files' className='image_landing'/>
+            </div>
 
             <div
                 ref={linksRef}

@@ -49,7 +49,16 @@ public class UserController {
         Result<User> result = service.create(user);
 
         if (result.isSuccess()) {
-            return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
+            String jwt = Jwts.builder()
+                    .claim("username", user.getUsername())
+                    .claim("userImageUrl", user.getUserImageUrl())
+                    .claim("userId", user.getUserId())
+                    .signWith(key.getKey())
+                    .compact();
+
+            Map<String, String> output = new HashMap<>();
+            output.put("jwt", jwt);
+            return new ResponseEntity<>(output, HttpStatus.CREATED);
         } else {
             return new ResponseEntity<>(result.getErrorMessages(), HttpStatus.BAD_REQUEST);
         }
@@ -58,7 +67,12 @@ public class UserController {
     @PutMapping("/{userId}")
     public ResponseEntity<Object> update(@PathVariable int userId, @RequestBody User user, @RequestHeader Map<String,String> headers) {
 
+
         Integer headerId = getUserIdFromHeaders(headers);
+
+        System.out.println(headers);
+
+        System.out.println("HEADER USER ID" + headerId);
 
         if(headerId == null){
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
@@ -96,6 +110,7 @@ public class UserController {
         if (BCrypt.verifyer().verify(proposedPassword, existing).verified) {
             String jwt = Jwts.builder()
                     .claim("username", user.getUsername())
+                    .claim("userImageUrl", userResult.getPayload().getUserImageUrl())
                     .claim("userId", userResult.getPayload().getUserId())
                     .signWith(key.getKey())
                     .compact();

@@ -10,6 +10,7 @@ window.Buffer = Buffer;
 window.process = process;
 import { useNavigate } from 'react-router-dom';
 
+
 gsap.registerPlugin(ScrollTrigger);
 
 
@@ -47,13 +48,14 @@ const LoginForm = ({setLoggedUser}) => {
     const [containerClasses, setContainerClasses] = useState('container login_container');
 
 	const [file, setFile] = useState(null);
-    const [fileUrl, setFileUrl] = useState('');
 
     const signUpClicked = () => {
+		setErrors([]);
         setContainerClasses('container login_container right-panel-active');
     }
 
     const signInClicked = () => {
+		setErrors([]);
         setContainerClasses('container login_container');
     }
 
@@ -91,7 +93,7 @@ const LoginForm = ({setLoggedUser}) => {
 				.promise();
 	
 			const url = getFileUrl(file.name);
-			return url; // Return the file URL directly
+			return url; 
 		} catch (err) {
 			console.error("Error uploading file:", err);
 			alert("Error uploading file.");
@@ -126,15 +128,13 @@ const LoginForm = ({setLoggedUser}) => {
 
 
 		if (file) {
-			imageUrl = await uploadFile(); // Capture the returned URL
+			imageUrl = await uploadFile(); 
 		}
 
 		const updatedUser = {
 			...user,
 			userImageUrl: imageUrl,
 		};
-
-		console.log(user.userImageUrl)
 
         fetch("http://localhost:8080/api/user", {
             method: "POST",
@@ -146,8 +146,10 @@ const LoginForm = ({setLoggedUser}) => {
         .then(response => {
             if (response.status >= 200 && response.status < 300) {
                 response.json().then((fetchedUser) => {
-					setLoggedUser(fetchedUser);
-                    localStorage.setItem("loggedInUser",JSON.stringify(fetchedUser))
+					const jwtUser = jwtDecode(fetchedUser.jwt)
+                    jwtUser.jwt = fetchedUser.jwt
+                    setLoggedUser(jwtUser);
+                    localStorage.setItem("loggedInUser",JSON.stringify(jwtUser))
                     navigate("/")
                 });
             } else {
@@ -156,15 +158,42 @@ const LoginForm = ({setLoggedUser}) => {
         });
     }
 
+	const handleLogIn = (event) => {
+        event.preventDefault()
+
+        fetch("http://localhost:8080/api/user/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(user)
+        })
+        .then(response => {
+            if (response.status >= 200 && response.status < 300) {
+                response.json().then((fetchedUser) => {
+
+                    const jwtUser = jwtDecode(fetchedUser.jwt)
+                    jwtUser.jwt = fetchedUser.jwt
+                    setLoggedUser(jwtUser);
+                    localStorage.setItem("loggedInUser",JSON.stringify(jwtUser))
+                    navigate("/")
+                })
+            } else {
+                response.json().then(fetchedErrors => setErrors(fetchedErrors))
+            }
+        })
+
+    }
+
     return (
         <div className='mt-5'>
             <div className={containerClasses} id="container" ref={formRef}>
                 <div className="form-container sign-up-container">
                     <form className="login_form" onSubmit={handleSignUp}>
-                        <h1>Create Account</h1>
-                        {errors.length > 0 && <ul id="errors">
-                            {errors.map(error => <li key={error}>{error}</li>)}
+					{errors.length > 0 && <ul id="errors" className='error'>
+                            {errors.map(error => <li className="me-4" key={error}>{error}</li>)}
                         </ul>}
+                        <h1>Create Account</h1>
                         <input
                             className="login_input"
                             type="text"
@@ -191,11 +220,29 @@ const LoginForm = ({setLoggedUser}) => {
                     </form>
                 </div>
                 <div className="form-container sign-in-container">
-                    <form className="login_form" action="#">
+		
+                    <form className="login_form" onSubmit={handleLogIn}>
+					{errors.length > 0 && <ul id="errors" className='error'>
+                            {errors.map(error => <li className="me-4" key={error}>{error}</li>)}
+                        </ul>}
                         <h1 className='login_h1'>Sign in</h1>
-                        <input className="login_input" type="text" placeholder="Username" />
-                        <input className="login_input" type="password" placeholder="Password" />
-                        <button className='login_button'>Sign In</button>
+						<input
+                            className="login_input"
+                            type="text"
+                            placeholder="Name"
+                            value={user.username}
+                            name="username"
+                            onChange={handleChange}
+                        />
+                        <input
+                            className="login_input"
+                            type="password"
+                            placeholder="Password"
+                            value={user.password}
+                            name="password"
+                            onChange={handleChange}
+                        />
+                        <button className='login_button' type='submit'>Sign In</button>
                     </form>
                 </div>
                 <div className="overlay-container">

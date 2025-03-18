@@ -6,6 +6,7 @@ import NavBar from './Components/NavBar';
 import LoginForm from './Components/LoginForm';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import EditProfilePic from './Components/EditProfilePic';
 
 function App() {
 
@@ -28,9 +29,10 @@ function App() {
 
   return (
     <Router>
-      <NavBar loggedUser={loggedUser}/>
+      <NavBar loggedUser={loggedUser} setLoggedUser={setLoggedUser}/>
       <Routes>
         <Route path="/" element={<Landing />} />
+        <Route path="/editProfile" element={<EditProfilePic loggedUser={loggedUser} setLoggedUser={setLoggedUser}/>} />
         <Route path="/login" element={<LoginForm setLoggedUser={setLoggedUser}/>} />
       </Routes>
     </Router>
