@@ -60,7 +60,7 @@ const NavBar = ({ loggedUser, setLoggedUser }) => {
           </ul>
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <div className="d-flex flex-row align-items-center">
-            {loggedUser != null ? <li className="nav-item">Welcome {loggedUser.username}</li> : null }
+            {loggedUser != null ? <li className="nav-item text-white">Welcome {loggedUser.username}</li> : null }
             <li className="nav-item dropdown">
               <Link className="nav-link me-4" to="#" onClick={toggleDropdown}>
                 <img
@@ -74,16 +74,16 @@ const NavBar = ({ loggedUser, setLoggedUser }) => {
                 />
               </Link>
               {dropdownOpen && (
-                <ul
-                  className="dropdown-menu show"
-                  style={{
-                    position: "absolute",
-                    top: "100%",
-                    right: "0",
-                    zIndex: 1050,
-                  }}
-                  aria-labelledby="navbarDropdown"
-                >
+               <ul
+               className="dropdown-menu show"
+               style={{
+                 position: "absolute",
+                 top: "90%",
+                 right: "10px", // Moves it 10px to the left
+                 zIndex: 1050,
+               }}
+               aria-labelledby="navbarDropdown"
+             >
                   {loggedUser == null ? (
                     <li>
                       <Link
