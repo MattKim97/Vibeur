@@ -242,7 +242,7 @@ const LoginForm = ({setLoggedUser}) => {
                             name="password"
                             onChange={handleChange}
                         />
-                        <button className='login_button' type='submit'>Sign In</button>
+                        <button className='login_button_blue mt-2' type='submit'>Sign In</button>
                     </form>
                 </div>
                 <div className="overlay-container">
@@ -255,7 +255,7 @@ const LoginForm = ({setLoggedUser}) => {
                         <div className="overlay-panel overlay-right">
                             <h1 className='login_h1'>New to Vibeur?</h1>
                             <p className='login_p'>Sign up to Vibeur here to start sharing today!</p>
-                            <button className="ghost login_button mt-2" id="signUp" onClick={signUpClicked}>Sign Up</button>
+                            <button className="ghost login_button blue_button" id="signUp" onClick={signUpClicked}>Sign Up</button>
                         </div>
                     </div>
                 </div>

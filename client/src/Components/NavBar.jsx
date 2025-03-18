@@ -17,15 +17,15 @@ const NavBar = ({ loggedUser, setLoggedUser }) => {
   };
 
   const handleLogOut = () => {
+    navigate("/login");
     localStorage.removeItem("loggedInUser");
     setLoggedUser(null);
-    navigate("/");
   };
 
   console.log(loggedUser);
 
   return (
-    <nav className="navbar sticky-top navbar-expand-lg navbar-light navbar_bg_color">
+    <nav className="navbar sticky-top navbar-expand-lg navbar-light">
       <div className="d-flex flex-row w-100">
         <Link className="navbar-brand ms-3" to="/">
           <img
@@ -48,12 +48,12 @@ const NavBar = ({ loggedUser, setLoggedUser }) => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link active navbar_text_color" aria-current="page" to="/">
+              <Link className="nav-link active text-white" aria-current="page" to="/">
                 Home
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/">
+              <Link className="nav-link text-white" to="/">
                 TODO
               </Link>
             </li>
@@ -125,9 +125,9 @@ const NavBar = ({ loggedUser, setLoggedUser }) => {
                   ) : null}
                   {loggedUser != null ? (
                     <li>
-                      <Link className="dropdown-item" onClick={handleLogOut}>
+                      <button className="dropdown-item" onClick={handleLogOut}>
                         Log Out
-                      </Link>
+                      </button>
                       <li>
                         <hr className="dropdown-divider" />
                       </li>

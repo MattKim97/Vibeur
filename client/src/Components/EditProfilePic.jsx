@@ -3,15 +3,29 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AWS from "aws-sdk";
 import anonymous from '../images/anonymous.png';
+import { useEffect } from 'react';
+import { useRef } from 'react';
+import { gsap } from 'gsap';
+
 
 
 const EditProfilePic = ({ loggedUser, setLoggedUser }) => {
+
+
+  const formRef = useRef(null);
+
 
   const S3_BUCKET_IMAGE = import.meta.env.VITE_S3_BUCKET_IMAGE;
 	const REGION = import.meta.env.VITE_REGION;
 	const S3_KEY = import.meta.env.VITE_S3_KEY;
 	const S3_SECRET = import.meta.env.VITE_S3_SECRET;
 
+  useEffect(() => {
+    gsap.fromTo(formRef.current, 
+      { opacity: 0 }, 
+      { opacity: 1, duration: 2, ease: "power2.inOut" } 
+    );
+}, []);
   
 	const getFileUrl = (fileName) => {
 		return `https://${S3_BUCKET_IMAGE}.s3.${REGION}.amazonaws.com/${fileName}`;
@@ -105,11 +119,17 @@ const EditProfilePic = ({ loggedUser, setLoggedUser }) => {
       }
   });
   }
+
+  const handleCancel = (e) => {
+    e.preventDefault();
+    navigate("/");
+  }
         
 	  
 
   return (
-    <div className="container edit_profile_border">
+    <div className='mt-5 container d-flex flex-column align-items-center justify-content-center'>
+      <div className="edit_profile_border bg-light" ref={formRef}>
       <div className="d-flex flex-column align-items-center">
       {errors.length > 0 && <ul id="errors" className='error'>
                             {errors.map(error => <li className="me-4" key={error}>{error}</li>)}
@@ -118,14 +138,18 @@ const EditProfilePic = ({ loggedUser, setLoggedUser }) => {
       <h4>Current profile picture: </h4>
       <img src={loggedUser != null && loggedUser.userImageUrl != "" ? loggedUser.userImageUrl : anonymous} className='edit_profile_image' alt="profile pic" />
 
-      <p className='login_p'>Upload a Profile Picture : </p>
+      <h4 className='mt-2'>Upload a New Profile Picture: </h4>
                         <input
-                            className="file-upload-label"
+                            className="file-upload-label mt-1"
                             type="file"
                             onChange={handleFileChange}
                             />
-      <button className="button" onClick={handleEdit}>Confirm</button>                   
+                            <div className="d-flex flex-row justify-content-center">
+                            <button className="button_edit_profile" onClick={handleEdit}>Confirm</button>  
+                            <button className="button_edit_profile" onClick={handleCancel}>Cancel</button> 
+                            </div>                                   
       </div>
+    </div>
     </div>
   )
 }
