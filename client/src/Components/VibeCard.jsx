@@ -4,9 +4,6 @@ import anonymous from '../images/anonymous.png';
 import { useState } from 'react'
 import { useEffect } from 'react'
 
-
-
-
 const VibeCard = ({vibe}) => {
 
 
@@ -64,7 +61,7 @@ function timeAgo(date) {
       <p className='description'>{vibe.description}</p>
       <div className='vibeInfo'>
         <div className="likes">
-            <p> 💖 {likes.length}</p>
+            <p className='text-white'> 🤍 🩷 {likes.length}</p>
         </div>
         <div className="uploaded_date" >
           <p>{timeAgo(vibe.dateUploaded)}</p>
