@@ -250,12 +250,12 @@ const LoginForm = ({setLoggedUser}) => {
                         <div className="overlay-panel overlay-left">
                             <h1 className='login_h1'>Already have an Account?</h1>
                             <p className='login_p'>Already a part of the Vibeur family?</p>
-                            <button className="ghost login_button" id="signIn" onClick={signInClicked}>Sign In</button>
+                            <button className="ghost login_button" id="signIn" onClick={signInClicked}>Log In</button>
                         </div>
                         <div className="overlay-panel overlay-right">
                             <h1 className='login_h1'>New to Vibeur?</h1>
                             <p className='login_p'>Sign up to Vibeur here to start sharing today!</p>
-                            <button className="ghost login_button blue_button" id="signUp" onClick={signUpClicked}>Sign Up</button>
+                            <button className="ghost login_button blue_button" id="signUp" onClick={signUpClicked}>Register</button>
                         </div>
                     </div>
                 </div>

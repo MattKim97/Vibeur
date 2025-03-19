@@ -7,6 +7,9 @@ import LoginForm from './Components/LoginForm';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import EditProfilePic from './Components/EditProfilePic';
+import VibeCard from './Components/VibeCard';
+import VibesList from './Components/VibesList';
+import MyVibesList from './Components/MyVibesList';
 
 function App() {
 
@@ -34,6 +37,8 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/editProfile" element={<EditProfilePic loggedUser={loggedUser} setLoggedUser={setLoggedUser}/>} />
         <Route path="/login" element={<LoginForm setLoggedUser={setLoggedUser}/>} />
+        <Route path="/vibes" element={<VibesList/> } />
+        <Route path="/myVibes" element={<MyVibesList loggedUser={loggedUser}/> } />
       </Routes>
     </Router>
   )

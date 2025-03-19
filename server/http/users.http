@@ -81,3 +81,7 @@ Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6InVzZXIyIiwidXNlcklkIjoyfQ.t
 "userImageUrl": "https://www.asdasd.com",
 "password" : "password1"
 }
+
+###
+
+GET {{url}}/1/myVibes HTTP/1.1

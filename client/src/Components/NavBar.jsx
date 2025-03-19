@@ -53,8 +53,8 @@ const NavBar = ({ loggedUser, setLoggedUser }) => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link text-white" to="/">
-                TODO
+              <Link className="nav-link text-white" to="/vibes">
+                Browse
               </Link>
             </li>
           </ul>
@@ -87,18 +87,18 @@ const NavBar = ({ loggedUser, setLoggedUser }) => {
                   {loggedUser == null ? (
                     <li>
                       <Link
-                        className="dropdown-item"
+                        className="dropdown-item text-center"
                         to="/login"
                         onClick={closeDropdown}
                       >
-                        SignUp / Login
+                        Login
                       </Link>
                     </li>
                   ) : null}
                   {loggedUser != null ? (
                     <li>
                       <Link
-                        className="dropdown-item"
+                        className="dropdown-item text-center"
                         to="/myVibes"
                         onClick={closeDropdown}
                       >
@@ -112,7 +112,7 @@ const NavBar = ({ loggedUser, setLoggedUser }) => {
                    {loggedUser != null ? (
                     <li>
                       <Link
-                        className="dropdown-item"
+                        className="dropdown-item text-center"
                         to="/editProfile"
                         onClick={closeDropdown}
                       >
@@ -125,12 +125,9 @@ const NavBar = ({ loggedUser, setLoggedUser }) => {
                   ) : null}
                   {loggedUser != null ? (
                     <li>
-                      <button className="dropdown-item" onClick={handleLogOut}>
+                      <button className="dropdown-item text-center" onClick={handleLogOut}>
                         Log Out
                       </button>
-                      <li>
-                        <hr className="dropdown-divider" />
-                      </li>
                     </li>
                   ) : null}
                 </ul>

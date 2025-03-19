@@ -34,13 +34,8 @@ public class UserController {
         this.key = key;
     }
 
-    @GetMapping("/myVibes")
-    public List<Vibe> getMyVibes(@RequestHeader Map<String,String> headers){
-        Integer userId = getUserIdFromHeaders(headers);
-        System.out.println(userId);
-        if(userId == null){
-            return null;
-        }
+    @GetMapping("/{userId}/myVibes")
+    public List<Vibe> getMyVibes(@PathVariable int userId){
         return vibeService.findByUserId(userId);
     }
 

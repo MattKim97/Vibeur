@@ -58,7 +58,7 @@ public class VibeService {
         }
 
         User user = userRepository.findById(vibe.getUser().getUserId());
-        user.setPassword("*************");
+        user.setPassword("null");
         vibe.setUser(user);
 
         if(result.isSuccess()){
@@ -83,7 +83,7 @@ public class VibeService {
         }
 
         User user = userRepository.findById(vibe.getUser().getUserId());
-        user.setPassword("*************");
+        user.setPassword("null");
         vibe.setUser(user);
 
         if(result.isSuccess()) {
