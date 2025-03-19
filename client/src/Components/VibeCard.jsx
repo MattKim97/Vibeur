@@ -3,6 +3,8 @@ import '../VibeCard.css'
 import anonymous from '../images/anonymous.png';
 import { useState } from 'react'
 import { useEffect } from 'react'
+import { Heart } from 'lucide-react';
+
 
 const VibeCard = ({vibe}) => {
 
@@ -61,7 +63,7 @@ function timeAgo(date) {
       <p className='description'>{vibe.description}</p>
       <div className='vibeInfo'>
         <div className="likes">
-            <p className='text-white'> 🤍 🩷 {likes.length}</p>
+            <p className='text-white d-flex flex-row gap-1 align-items-center'> <Heart size={16} color='pink' fill='pink'/> {likes.length}</p>
         </div>
         <div className="uploaded_date" >
           <p>{timeAgo(vibe.dateUploaded)}</p>
