@@ -4,6 +4,8 @@ import VibeCard from "./VibeCard";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+
+
 gsap.registerPlugin(ScrollTrigger);
 
 const VibesList = () => {
@@ -122,7 +124,7 @@ const relaxedVibes = vibes.filter((vibe) => vibe.mood.moodName === "relaxed");
     type="text"
     ref={searchRef}
     className="form-control text-center select_style_list ms-2 me-auto mt-5"
-    placeholder="Search by title"
+    placeholder={"🔍 Search by title"}
     onChange={(e) => {
       const search = e.target.value.toLowerCase();
       const filtered = vibes.filter((vibe) =>
