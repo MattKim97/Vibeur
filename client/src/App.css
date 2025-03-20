@@ -248,3 +248,23 @@ body {
   left: 12px;
   color: #ff1d6c;
 }
+
+.gradient_text {
+  background: -webkit-linear-gradient(#ffedea, #f5c3d7, #a8dff0, #aaf0e0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.select_style_list{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 12%;
+  color : black;
+}
+
+.logo_landing_text{
+  font-size: 25px;
+  font-weight: bold;
+}

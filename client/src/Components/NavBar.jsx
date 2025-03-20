@@ -25,14 +25,10 @@ const NavBar = ({ loggedUser, setLoggedUser }) => {
   console.log(loggedUser);
 
   return (
-    <nav className="navbar sticky-top navbar-expand-lg navbar-light">
-      <div className="d-flex flex-row w-100">
-        <Link className="navbar-brand ms-3" to="/">
-          <img
-            src={vibeurLogo}
-            alt="Vibeur Logo"
-            className="image_logo_navbar"
-          />
+    <nav className="navbar sticky-top navbar-expand-lg navbar-light d-flex flex-row w-100 align-items-center">
+      <div className="d-flex flex-row w-100 align-items-center">
+        <Link className="navbar-brand ms-4 gradient_text logo_landing_text" to="/">
+          Vibeur
         </Link>
         <button
           className="navbar-toggler"

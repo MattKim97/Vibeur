@@ -42,12 +42,12 @@ const Landing = () => {
     return (
         <div className='container d-flex flex-column align-items-center justify-content-center text-white'>
             <h1 ref={headingRef} className="spacing_landing_top display-1">
-                Welcome to Vibeur!
+                Welcome to <span className='gradient_text'>Vibeur</span>
             </h1>
 
             <div className='display-6 width_landing spacing_landing lead gap-1 d-flex flex-row align-items-center justify-content-center' ref={paragraphRef}>
             <p className='margin_right_landing'>
-            "Vibeur is a platform for sharing your feelings through visual storytelling and vibe-based music. It’s a space where users can express emotions, spark creativity, and connect with others in the Vibeur community."
+            <span className='gradient_text'>Vibeur</span> is a platform for sharing your feelings through visual storytelling and vibe-based music. It’s a space where users can express emotions, spark creativity, and connect with others in the Vibeur community.
             </p>
             <div class="container">
         <div class="ring"></div>
