@@ -25,18 +25,23 @@ const MusicPlayer = ({ audioUrl }) => {
   
     const bufferLength = analyser.frequencyBinCount;
     const dataArray = new Uint8Array(bufferLength);
+    // find leading zeros of the data array
+    // cut off all zeros
+    // loop through the array
+
   
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
   
-    // Ensure canvas resolution matches CSS size
-    canvas.width = 350; // Set the internal resolution
+    canvas.width = 350;
     canvas.height = 350;
   
     const draw = () => {
       requestAnimationFrame(draw);
       analyser.getByteFrequencyData(dataArray);
-  
+
+
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
   
       const centerX = canvas.width / 2;
@@ -49,7 +54,10 @@ const MusicPlayer = ({ audioUrl }) => {
       ctx.strokeStyle = "#fff";
       ctx.lineWidth = 2;
       ctx.stroke();
-  
+
+      // make a modified version of data array with chopped out zero
+      
+      
       for (let i = 0; i < barCount; i++) {
         const angle = (i / barCount) * Math.PI * 2;
         const barHeight = (dataArray[i] / 255) * 50 + 10;
@@ -99,7 +107,7 @@ const MusicPlayer = ({ audioUrl }) => {
     <div className="audioVisualizerContainer">
       <canvas ref={canvasRef} className="audioVisualizer"></canvas>
       <button
-        className="playPauseButton"
+        className={isPlaying ? "playPauseButtonTransparent" : "playPauseButton"}
         onClick={togglePlayPause}
       >
         {isPlaying ? "Pause" : "Play"}

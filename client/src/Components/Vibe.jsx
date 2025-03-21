@@ -7,14 +7,29 @@ import "../Vibe.css";
 import anonymous from "../images/anonymous.png";
 import CommentsContainer from "./CommentsContainer";
 import MusicPlayer from "./MusicPlayer";
+import { Smile } from "lucide-react";
+import { Laugh } from "lucide-react";
+import { Frown } from "lucide-react";
+import { Angry } from "lucide-react";
+import { Headphones } from "lucide-react";
 
 const Vibe = ({ loggedUser }) => {
+  const INITIAL_COMMENT = {
+    comment: "",
+  };
+
   const [vibe, setVibe] = useState({});
   const [likes, setLikes] = useState([]);
   const [comments, setComments] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const [hasLiked, setHasLiked] = useState(false);
+  const [modalState, setModalState] = useState(false);
+  const [newComment, setNewComment] = useState(INITIAL_COMMENT);
+
   const { vibeId } = useParams();
+
+  const openModal = () => setModalState(true);
+  const closeModal = () => setModalState(false);
 
   useEffect(() => {
     fetch(`http://localhost:8080/api/vibe/${vibeId}`).then((res) =>
@@ -101,25 +116,127 @@ const Vibe = ({ loggedUser }) => {
     }
   };
 
+  const addComment = () => {
+    if (!newComment.comment.trim()) return; // Prevent empty comments
+  
+    fetch(`http://localhost:8080/api/vibe/${vibeId}/comments`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: loggedUser.jwt,
+      },
+      body: JSON.stringify({ comment: newComment.comment }), // Only send the comment text
+    })
+      .then((res) => res.json())
+      .then((savedComment) => {
+        setComments([...comments, savedComment]);
+        setNewComment(INITIAL_COMMENT); // Clear input after submitting
+        closeModal(); // Close the modal after submitting
+      });
+
+  };
+
+  const handleChange = (event) => {
+    setNewComment({
+      ...newComment,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  let icon;
+
+  switch (vibe.mood.moodName) {
+    case "happy":
+      icon = <Smile size={24} color="yellow" />;
+      break;
+    case "sad":
+      icon = <Frown size={24} color="blue" />;
+      break;
+    case "angry":
+      icon = <Angry size={24} color="red" />;
+      break;
+    case "excited":
+      icon = <Laugh size={24} color="green" />;
+      break;
+    case "relaxed":
+      icon = <Headphones size={24} color="cyan" />;
+      break;
+  }
+
+  console.log(newComment);
+
   return (
     <div className="vibeContainer d-flex flex-row align-items-center justify-content-center">
-
       <div className="vibeContainerMain d-flex flex-column align-items-center justify-content-center">
-      <div className="musicPlayerBackground ">
-        <MusicPlayer audioUrl={vibe.songUrl} />
-      </div>
-        <h2 className="text-white">{vibe.title}</h2>
-        <p className="text-white">{vibe.description}</p>
+        <div className="musicPlayerBackground ">
+          <MusicPlayer audioUrl={vibe.songUrl} />
+        </div>
+        <h2 className="text-white display-4 gradient_text">{vibe.title}</h2>
+        <div className="descriptionLikesContainer d-flex flex-column align-items-center justify-content-center">
+          <div className="d-flex flex-row align-items-center justify-content-center">
+            <p className="">{vibe.description}</p>
+            <div className="vibeInfo d-flex flex-row gap-1 align-items-center justify-content-between">
+              <div className="likes">
+                <p className=" d-flex flex-row gap-1 align-items-center textSizePVibe ms-2 ">
+                  {loggedUser ? (
+                    vibe && hasLiked ? (
+                      <Heart
+                        size={24}
+                        color="pink"
+                        fill="pink"
+                        onClick={likeClick}
+                        className="changeToPointer"
+                      />
+                    ) : (
+                      <Heart
+                        size={24}
+                        color="pink"
+                        onClick={likeClick}
+                        className="changeToPointer"
+                      />
+                    )
+                  ) : (
+                    <Heart size={24} color="pink" />
+                  )}
+                  {likes.length}
+                </p>
+              </div>
+              <div className="uploaded_date pxFont24 ms-2">
+                <p>{timeAgo(vibe.dateUploaded)}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="vibeContainerMainImgCom">
+          <div className={modalState ? "commentsModal" : "commentsModalclosed"}>
+            <input
+              className="commentInput whiteBackground"
+              type="text"
+              placeholder="Add a comment..."
+              name="comment"
+              value={newComment.comment}
+              onChange={handleChange}
+            />{" "}
+            <button className="commentsButton" onClick={addComment}>
+              Add
+            </button>
+            <button className="commentsButton" onClick={closeModal}>
+              Close
+            </button>
+          </div>
           <img className="vibe_image" src={vibe.imageUrl} alt="vibeCardImage" />
           <div className="commentsContainer">
             <div className="card">
-              <div className="card-body text-center">
-                <h4 className="card-title">Comments</h4>
-              </div>
+              <h3 className="text-center">Comments</h3>
               <div className="comment-widgets">
+                <button className="commentsButton mb-2" onClick={openModal}>
+                  Comment
+                </button>
                 {comments && comments.length > 0 ? (
-                  comments.map((comment) => CommentsContainer({ comment }))
+                  comments.map((comment) => (
+                    <CommentsContainer key={comment.comm} comment={comment} />
+                  ))
                 ) : (
                   <p className="text-center">No comments yet!</p>
                 )}
@@ -127,41 +244,10 @@ const Vibe = ({ loggedUser }) => {
             </div>
           </div>
         </div>
-        <div className="vibeInfo d-flex flex-row gap-1 align-items-center justify-content-between">
-          <div className="likes">
-            <p className="text-white d-flex flex-row gap-1 align-items-center textSizePVibe">
-              {loggedUser ? (
-                vibe && hasLiked ? (
-                  <Heart
-                    size={24}
-                    color="pink"
-                    fill="pink"
-                    onClick={likeClick}
-                    className="changeToPointer"
-                  />
-                ) : (
-                  <Heart
-                    size={24}
-                    color="pink"
-                    onClick={likeClick}
-                    className="changeToPointer"
-                  />
-                )
-              ) : (
-                <Heart size={24} color="pink" />
-              )}
-              {likes.length}
-            </p>
-          </div>
-          <div className="uploaded_date text-white">
-            <p>{timeAgo(vibe.dateUploaded)}</p>
-          </div>
-        </div>
-        <hr />
-        <div className="user d-flex flex-row align-items-center justify-content-center gap-2">
+        <div className="user d-flex flex-row align-items-center justify-content-center gap-2 mt-5">
           <div className="wrapper">
             <img
-            className="vibe_user_image"
+              className="vibe_user_image"
               src={
                 vibe && vibe.user && vibe.user.userImageUrl
                   ? vibe.user.userImageUrl
@@ -175,7 +261,7 @@ const Vibe = ({ loggedUser }) => {
             {vibe && vibe.user ? vibe.user.username : "Unknown"}
           </p>
           {vibe?.user?.userId === loggedUser?.userId ? (
-            <div className="text-white d-flex flex-row gap-2 align-items-center justify-content-center" >
+            <div className="text-white d-flex flex-row gap-2 align-items-center justify-content-center">
               <button className="userButton">Edit</button>
               <button className="userButton">Delete</button>
             </div>

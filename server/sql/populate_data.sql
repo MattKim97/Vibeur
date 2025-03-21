@@ -50,11 +50,11 @@ insert into `user`(username, userImageUrl, `password`) values
 ('user30', null , 'password30');
 
 insert into vibe(title, `description`, imageUrl, songUrl, dateUploaded, user_id, mood_id) values
-('Feeling excited!', 'Today is a exciting day I am ready for some change!', 'https://vibeur.s3.us-west-1.amazonaws.com/images.jfif', 'https://vibeur.s3.us-west-1.amazonaws.com/Good+Kid+-+No+Time+To+Explain+(Official+Lyric+Video).mp3', '2025-03-17-10-17-52', 1, 5),
+('Feeling excited!', 'Today is a exciting day I am ready for some change!', 'https://vibeur.s3.us-west-1.amazonaws.com/newexcited.jpeg', 'https://vibeur.s3.us-west-1.amazonaws.com/Good+Kid+-+No+Time+To+Explain+(Official+Lyric+Video).mp3', '2025-03-17-10-17-52', 1, 5),
 ('Depresso', 'Feeling a bit down today, just want a cup of coffee', 'https://vibeur.s3.us-west-1.amazonaws.com/MotleyFool-TMOT-6ce98652-steaming-coffee-cup.webp', 'https://vibeur.s3.us-west-1.amazonaws.com/John+Mayer+-+Slow+Dancing+In+A+Burning+Room+(Lyrics).mp3', '2025-03-16-14-24-55', 2, 2),
-('Fed Up and Fired Up', "I'm at my limit. Tired of biting my tongue, tired of holding back. Today, I'm letting it out — no filters, no apologies.", 'https://vibeur.s3.us-west-1.amazonaws.com/furious-frustated-businessman-hitting-computer-600nw-200466014.webp', 'https://vibeur.s3.us-west-1.amazonaws.com/Rage+against+the+machine+-+Killing+in+the+name+Lyrics.mp3', '2025-03-15-22-33-51', 3, 3),
-('Just chilling', 'Been a long day just gonna sit back and contemplate', 'https://vibeur.s3.us-west-1.amazonaws.com/haiku.png', 'https://vibeur.s3.us-west-1.amazonaws.com/Headphone+Activist+-+Haiku.mp3', '2025-03-19-10-17-52', 1, 4),
-('Happiness', 'Feeling happy, just wanna share some positivity!', 'https://vibeur.s3.us-west-1.amazonaws.com/happy.png', 'https://vibeur.s3.us-west-1.amazonaws.com/Redbone+-+Come+and+Get+Your+Love+(Lyrics)+Guardians+of+the+Galaxy.mp3', '2025-03-10-10-17-52', 1, 1);
+('Fed Up and Fired Up', "I'm at my limit. Tired of biting my tongue, tired of holding back.", 'https://vibeur.s3.us-west-1.amazonaws.com/furious-frustated-businessman-hitting-computer-600nw-200466014.webp', 'https://vibeur.s3.us-west-1.amazonaws.com/Rage+against+the+machine+-+Killing+in+the+name+Lyrics.mp3', '2025-03-15-22-33-51', 3, 3),
+('Just chilling', 'Been a long day just gonna sit back and contemplate', 'https://vibeur.s3.us-west-1.amazonaws.com/new+relaxed.jpg', 'https://vibeur.s3.us-west-1.amazonaws.com/Headphone+Activist+-+Haiku.mp3', '2025-03-19-10-17-52', 1, 4),
+('Happiness', 'Feeling happy, just wanna share some positivity!', 'https://vibeur.s3.us-west-1.amazonaws.com/happiness-pictures-arrv7cf98wd6u0lm.jpg', 'https://vibeur.s3.us-west-1.amazonaws.com/Redbone+-+Come+and+Get+Your+Love+(Lyrics)+Guardians+of+the+Galaxy.mp3', '2025-03-10-10-17-52', 1, 1);
 
 insert into `comment`(content, dateCreated, isEdited, user_id, vibe_id) values
 ('This is a great vibe!', '2025-03-17-10-17-52', false, 2, 1),
@@ -62,7 +62,12 @@ insert into `comment`(content, dateCreated, isEdited, user_id, vibe_id) values
 ('I feel you', '2025-03-16-14-24-55', false, 1, 2),
 ('I hope you feel better soon', '2025-03-16-14-24-55', false, 3, 2),
 ('I feel the same way tired of holding back', '2025-03-15-22-33-51', false, 1, 3),
-('PREACH', '2025-03-15-22-33-51', false, 2, 3);
+('PREACH', '2025-03-15-22-33-51', false, 2, 3),
+('This is so relatable', '2025-03-19-10-17-52', false, 1, 4),
+('Thanks needed this', '2025-03-19-10-17-52', false, 3, 4),
+('Love the positivity', '2025-03-10-10-17-52', false, 1, 5),
+('This made my day!', '2025-03-10-10-17-52', false, 3, 5);
+;
 
 insert into `like`(user_id, vibe_id) values
 
@@ -133,7 +138,23 @@ insert into `like`(user_id, vibe_id) values
 (27,5),
 (28,5),
 (29,5),
-(30,5);
+(30,5),
+(1,5),
+(2,5),
+(3,5),
+(4,5),
+(5,5),
+(6,5),
+(7,5),
+(8,5),
+(9,5),
+(10,5),
+(11,5),
+(12,5),
+(13,5),
+(14,5),
+(15,5);
+;
 
 
 

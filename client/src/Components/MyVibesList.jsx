@@ -64,6 +64,7 @@ const MyVibesList = ({loggedUser}) => {
                   <VibeCard vibe={vibe} />
                 </div>
               ))}
+
             </div>
           );
         };
