@@ -22,7 +22,6 @@ const NavBar = ({ loggedUser, setLoggedUser }) => {
     setLoggedUser(null);
   };
 
-  console.log(loggedUser);
 
   return (
     <nav className="navbar sticky-top navbar-expand-lg navbar-light d-flex flex-row w-100 align-items-center">

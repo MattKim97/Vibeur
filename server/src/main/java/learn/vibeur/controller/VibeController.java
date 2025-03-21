@@ -205,6 +205,28 @@ public class VibeController {
         }
     }
 
+    @DeleteMapping("/{id}/likes")
+    public ResponseEntity<Object> deleteLike(@PathVariable int id, @RequestBody Like like, @RequestHeader Map<String,String> headers) {
+        Integer userId = getUserIdFromHeaders(headers);
+
+        if(userId == null){
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+
+        like.setUserId(userId);
+
+        like.setVibeId(id);
+
+        Result<Like> result = likeService.delete(like);
+
+        if(result.isSuccess()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }else{
+            return new ResponseEntity<>(result.getErrorMessages(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+
 
 
 

@@ -57,6 +57,10 @@ html {
   margin: 0;
 }
 
+.border-red{
+  border: 3px solid red;
+}
+
 .animated {
   position: relative; 
   min-height: 1px;   /* Maintains layout space */
@@ -267,4 +271,8 @@ body {
 .logo_landing_text{
   font-size: 25px;
   font-weight: bold;
+}
+
+.changeToPointer{
+  cursor: pointer;
 }

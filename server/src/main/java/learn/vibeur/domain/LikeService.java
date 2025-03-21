@@ -67,13 +67,24 @@ public class LikeService {
     }
 
     public Result<Like> delete(Like like){
-        Result<Like> result = validate(like);
-        if(!result.isSuccess()){
+
+        Result<Like> result = new Result<>();
+        if(like == null){
+            result.addErrorMessage("Like cannot be null", ResultType.INVALID);
             return result;
         }
 
-        if(like.getLikeId() <= 0){
-            result.addErrorMessage("Like ID must be set for `delete` operation", ResultType.INVALID);
+        if(like.getUserId() <= 0){
+            result.addErrorMessage("User ID must not be null", ResultType.INVALID);
+            return result;
+        }
+
+        if(like.getVibeId() <= 0){
+            result.addErrorMessage("Vibe ID must not be null", ResultType.INVALID);
+            return result;
+        }
+
+        if(!result.isSuccess()){
             return result;
         }
 

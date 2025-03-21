@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import VibeCard from './VibeCard'
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
+import { useNavigate } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,6 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 const MyVibesList = ({loggedUser}) => {
 
     const myListRef = useRef(null);
+    const navigate = useNavigate();
 
 
         const [vibes, setVibes] = useState([])
@@ -57,7 +58,9 @@ const MyVibesList = ({loggedUser}) => {
               ref={myListRef}
             >
               {vibes.map((vibe) => (
-                <div className="col-12 col-md-4" key={vibe.title}>
+                <div className="col-12 col-md-4" key={vibe.title} onClick={() => {
+                    navigate(`/vibe/${vibe.vibeId}`);
+                  }}>
                   <VibeCard vibe={vibe} />
                 </div>
               ))}

@@ -10,6 +10,7 @@ import EditProfilePic from './Components/EditProfilePic';
 import VibeCard from './Components/VibeCard';
 import VibesList from './Components/VibesList';
 import MyVibesList from './Components/MyVibesList';
+import Vibe from './Components/Vibe';
 
 function App() {
 
@@ -17,7 +18,6 @@ function App() {
   const [loggedUser,setLoggedUser] = useState(null)
 	const [loaded, setLoaded] = useState(false)
   
-  console.log(loggedUser)
 
 	useEffect(() => {
 		if(localStorage.getItem("loggedInUser")){
@@ -39,6 +39,7 @@ function App() {
         <Route path="/login" element={<LoginForm setLoggedUser={setLoggedUser}/>} />
         <Route path="/vibes" element={<VibesList/> } />
         <Route path="/myVibes" element={<MyVibesList loggedUser={loggedUser}/> } />
+        <Route path="/vibe/:vibeId" element={<Vibe loggedUser={loggedUser}/>} />
       </Routes>
     </Router>
   )

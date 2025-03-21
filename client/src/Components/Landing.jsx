@@ -49,10 +49,10 @@ const Landing = () => {
             <p className='margin_right_landing'>
             <span className='gradient_text'>Vibeur</span> is a platform for sharing your feelings through visual storytelling and vibe-based music. It’s a space where users can express emotions, spark creativity, and connect with others in the Vibeur community.
             </p>
-            <div class="container">
-        <div class="ring"></div>
-        <div class="ring"></div>
-        <div class="ring"></div>
+            <div className="container">
+        <div className="ring"></div>
+        <div className="ring"></div>
+        <div className="ring"></div>
     </div>
             </div>
 
