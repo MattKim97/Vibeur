@@ -4,6 +4,9 @@ import "../Comments.css"
 
 
 const CommentsContainer = ({comment}) => {
+
+
+
   return (
     <div className="d-flex flex-row comment-row">
     <div className="p-2 commentuserImage"><img src={comment.user && comment.user.userImageUrl ? comment.user.userImageUrl : anonymous} alt="user" className="comments_user_image"/></div>

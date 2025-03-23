@@ -25,11 +25,18 @@ const Vibe = ({ loggedUser }) => {
   const [hasLiked, setHasLiked] = useState(false);
   const [modalState, setModalState] = useState(false);
   const [newComment, setNewComment] = useState(INITIAL_COMMENT);
+  const [editingCommentId, setEditingCommentId] = useState(null);
 
   const { vibeId } = useParams();
 
   const openModal = () => setModalState(true);
   const closeModal = () => setModalState(false);
+
+  const openModalAddComment = () => {
+    setEditingCommentId(null);
+    setNewComment(INITIAL_COMMENT);
+    setModalState(true);
+  };
 
   useEffect(() => {
     fetch(`http://localhost:8080/api/vibe/${vibeId}`).then((res) =>
@@ -46,7 +53,7 @@ const Vibe = ({ loggedUser }) => {
         setLikes(fetchedLikes);
       })
     );
-  }, []);
+  }, [comments]);
 
   useEffect(() => {
     fetch(`http://localhost:8080/api/vibe/${vibeId}/comments`).then((res) =>
@@ -118,7 +125,7 @@ const Vibe = ({ loggedUser }) => {
 
   const addComment = () => {
     if (!newComment.comment.trim()) return; // Prevent empty comments
-  
+
     fetch(`http://localhost:8080/api/vibe/${vibeId}/comments`, {
       method: "POST",
       headers: {
@@ -133,7 +140,53 @@ const Vibe = ({ loggedUser }) => {
         setNewComment(INITIAL_COMMENT); // Clear input after submitting
         closeModal(); // Close the modal after submitting
       });
+  };
 
+  const deleteComment = (commentId) => {
+    fetch(`http://localhost:8080/api/comment/${commentId}`, {
+      method: "DELETE",
+    }).then(() => {
+      setComments((prevComments) =>
+        prevComments.filter((comment) => comment.commentId !== commentId)
+      );
+      closeModal();
+      setNewComment(INITIAL_COMMENT);
+      setEditingCommentId(null);
+    });
+  };
+
+  const editComment = (commentId) => {
+    const commentToEdit = comments.find(comment => comment.commentId === commentId);
+    if (commentToEdit) {
+      setNewComment({ comment: commentToEdit.comment });
+      openModal();
+  
+      setEditingCommentId(commentId);
+    }
+  };
+  
+  const submitEditedComment = () => {
+    if (!newComment.comment.trim() || !editingCommentId) return;
+  
+    fetch(`http://localhost:8080/api/comment/${editingCommentId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: loggedUser.jwt,
+      },
+      body: JSON.stringify({ comment: newComment.comment }),
+    }).then(() => {
+      setComments((prevComments) =>
+        prevComments.map((comment) =>
+          comment.commentId === editingCommentId
+            ? { ...comment, comment: newComment.comment }
+            : comment
+        )
+      );
+      closeModal();
+      setNewComment(INITIAL_COMMENT);
+      setEditingCommentId(null);
+    });
   };
 
   const handleChange = (event) => {
@@ -210,6 +263,9 @@ const Vibe = ({ loggedUser }) => {
 
         <div className="vibeContainerMainImgCom">
           <div className={modalState ? "commentsModal" : "commentsModalclosed"}>
+            <div className="modalHeader">
+              <h2 className="text-white"> {editingCommentId ? "Edit a comment" : "Add a comment"}</h2>
+            </div>
             <input
               className="commentInput whiteBackground"
               type="text"
@@ -218,8 +274,11 @@ const Vibe = ({ loggedUser }) => {
               value={newComment.comment}
               onChange={handleChange}
             />{" "}
-            <button className="commentsButton" onClick={addComment}>
-              Add
+            <button
+              className="commentsButton"
+              onClick={editingCommentId ? submitEditedComment : addComment}
+            >
+              {editingCommentId ? "Edit" : "Add"}
             </button>
             <button className="commentsButton" onClick={closeModal}>
               Close
@@ -230,12 +289,34 @@ const Vibe = ({ loggedUser }) => {
             <div className="card">
               <h3 className="text-center">Comments</h3>
               <div className="comment-widgets">
-                <button className="commentsButton mb-2" onClick={openModal}>
+                {loggedUser ?     <button className="commentsButton mb-2" onClick={openModalAddComment}>
                   Comment
-                </button>
+                </button> : null}
                 {comments && comments.length > 0 ? (
                   comments.map((comment) => (
-                    <CommentsContainer key={comment.comm} comment={comment} />
+                    <div>
+                      <CommentsContainer
+                        key={comment.comm}
+                        comment={comment}
+                        loggedUser={loggedUser}
+                      />
+                      {comment.user.userId === loggedUser?.userId && (
+                        <div className="d-flex flex-row gap-2 align-items-center justify-content-end">
+                          <button
+                            className="userButton"
+                            onClick={() => editComment(comment.commentId)}
+                          >
+                            Edit
+                          </button>
+                          <button
+                            className="userButton"
+                            onClick={() => deleteComment(comment.commentId)}
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      )}
+                    </div>
                   ))
                 ) : (
                   <p className="text-center">No comments yet!</p>
