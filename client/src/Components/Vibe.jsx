@@ -12,6 +12,7 @@ import { Laugh } from "lucide-react";
 import { Frown } from "lucide-react";
 import { Angry } from "lucide-react";
 import { Headphones } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Vibe = ({ loggedUser }) => {
   const INITIAL_COMMENT = {
@@ -28,6 +29,7 @@ const Vibe = ({ loggedUser }) => {
   const [editingCommentId, setEditingCommentId] = useState(null);
 
   const { vibeId } = useParams();
+  const navigate = useNavigate();
 
   const openModal = () => setModalState(true);
   const closeModal = () => setModalState(false);
@@ -196,6 +198,17 @@ const Vibe = ({ loggedUser }) => {
     });
   };
 
+  const handleDeleteVibe = () => {
+    fetch(`http://localhost:8080/api/vibe/${vibeId}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: loggedUser.jwt,
+      },
+    }).then(() => {
+      navigate("/vibes");
+    });
+  }
+
   let icon;
 
   switch (vibe.mood.moodName) {
@@ -344,7 +357,7 @@ const Vibe = ({ loggedUser }) => {
           {vibe?.user?.userId === loggedUser?.userId ? (
             <div className="text-white d-flex flex-row gap-2 align-items-center justify-content-center">
               <button className="userButton">Edit</button>
-              <button className="userButton">Delete</button>
+              <button className="userButton" onClick={handleDeleteVibe}>Delete</button>
             </div>
           ) : null}
         </div>
