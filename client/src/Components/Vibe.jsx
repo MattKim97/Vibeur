@@ -356,7 +356,7 @@ const Vibe = ({ loggedUser }) => {
           </p>
           {vibe?.user?.userId === loggedUser?.userId ? (
             <div className="text-white d-flex flex-row gap-2 align-items-center justify-content-center">
-              <button className="userButton">Edit</button>
+              <button className="userButton" onClick={() => navigate(`/vibe/${vibeId}/edit`)}>Edit</button>
               <button className="userButton" onClick={handleDeleteVibe}>Delete</button>
             </div>
           ) : null}
