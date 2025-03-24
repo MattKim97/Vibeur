@@ -1,0 +1,87 @@
+@url=http://localhost:8080/api/vibe
+
+GET {{url}} HTTP/1.1
+
+###
+
+
+GET {{url}}/1 HTTP/1.1
+
+###
+
+
+GET {{url}}/4 HTTP/1.1
+
+
+###
+
+
+GET {{url}}99 HTTP/1.1
+
+
+###
+GET {{url}}/5/comments HTTP/1.1
+
+###
+GET {{url}}/99/comments HTTP/1.1
+
+
+###
+GET {{url}}/5/likes HTTP/1.1
+
+###
+GET {{url}}/99/likes HTTP/1.1
+
+###
+
+POST {{url}} HTTP/1.1
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6InVzZXIyIiwidXNlcklkIjoyfQ.Fp_-OTsXMHpUhmU2rfNZXjLaV56YlxjfezagnXhA6gI
+
+{
+    "title" : "Test Vibe",
+    "description" : "Test Vibe Description",
+    "imageUrl" : "https://www.google.com",
+    "songUrl": "https://www.google.com",
+    "mood" : {
+        "moodId": 2,
+        "moodName": "sad"
+    }
+}
+
+###
+
+PUT {{url}}/4 HTTP/1.1
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6InVzZXIyIiwidXNlcklkIjoyfQ.no1KdYzslXB5XxLTOTdWTAd4Con3gjCzs7FfvUaC_ZM
+
+{
+    "vibeId": 4,
+    "title" : "Test Vibe Updated",
+    "description" : "Test Vibe Description Updated"
+}
+
+
+###
+
+DELETE {{url}}/6 HTTP/1.1
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6InVzZXIyIiwidXNlcklkIjoyfQ.Fp_-OTsXMHpUhmU2rfNZXjLaV56YlxjfezagnXhA6gI
+
+###
+
+POST {{url}}/5/comments HTTP/1.1
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6InVzZXIyIiwidXNlcklkIjoyfQ.Fp_-OTsXMHpUhmU2rfNZXjLaV56YlxjfezagnXhA6gI
+
+{
+    "comment" : "Test Comment"
+}
+
+###
+
+POST {{url}}/5/likes HTTP/1.1
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6InVzZXIyIiwidXNlcklkIjoyfQ.Fp_-OTsXMHpUhmU2rfNZXjLaV56YlxjfezagnXhA6gI
+
+{}

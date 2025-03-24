@@ -1,0 +1,87 @@
+@url=http://localhost:8080/api/user
+
+
+// a happy path
+POST {{url}} HTTP/1.1
+Content-Type: application/json
+
+{
+"username" : "Test 4",
+"userImageUrl": "https://www.google.com",
+"password" : "Test 3 Password"
+}
+
+###
+
+// a unhappy path
+POST {{url}} HTTP/1.1
+Content-Type: application/json
+
+{
+"username" : "",
+"password" : "Test 2 Password"
+}
+
+###
+
+// a unhappy path
+POST {{url}} HTTP/1.1
+Content-Type: application/json
+
+{
+"username" : "Test 4",
+"password" : ""
+}
+
+
+###
+
+POST http://localhost:8080/api/user/login HTTP/1.1
+Content-Type: application/json
+
+{
+"username" : "user2",
+"password" : "password1"
+}
+
+###
+
+POST http://localhost:8080/api/user/login HTTP/1.1
+Content-Type: application/json
+
+{
+"username" : "Test 2",
+"password" : "Test 2 Passwaaaord"
+}
+
+###
+
+POST http://localhost:8080/api/user/login HTTP/1.1
+Content-Type: application/json
+
+{
+"username" : "Test 2aaa",
+"password" : "Test 2 Password"
+}
+
+###
+
+GET {{url}}/myVibes HTTP/1.1
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6InVzZXIyIiwidXNlcklkIjoyfQ.tFLWjeXaccMuu948w5rL7JJyocmEIhhaLZVnLXZ7k58
+###
+
+PUT {{url}}/2 HTTP/1.1
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6InVzZXIyIiwidXNlcklkIjoyfQ.tFLWjeXaccMuu948w5rL7JJyocmEIhhaLZVnLXZ7k58
+
+{
+"userId":2,
+"username" : "test2",
+"userImageUrl": "https://www.asdasd.com",
+"password" : "password1"
+}
+
+###
+
+GET {{url}}/1/myVibes HTTP/1.1
