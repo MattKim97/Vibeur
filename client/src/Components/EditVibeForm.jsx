@@ -45,8 +45,6 @@ const EditVibeForm = ({loggedUser}) => {
       );
     }, []);
 
-  console.log(vibeId)
-  console.log(vibe);
 
   const handleChange = (event) => {
     setVibe({
@@ -76,6 +74,14 @@ const EditVibeForm = ({loggedUser}) => {
     return null;
   }
 
+  console.log(vibe);
+
+  console.log("vibeId"+ vibe.user.userId);
+  console.log("userId" + loggedUser.userId);
+
+  if(loggedUser && loggedUser.userId != vibe.user.userId){
+    navigate("/NotFound");
+    }
   
 
 
