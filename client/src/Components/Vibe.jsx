@@ -13,11 +13,38 @@ import { Frown } from "lucide-react";
 import { Angry } from "lucide-react";
 import { Headphones } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useRef } from "react";
+
+gsap.registerPlugin(ScrollTrigger);
+
 
 const Vibe = ({ loggedUser }) => {
   const INITIAL_COMMENT = {
     comment: "",
   };
+
+      const vibeRef = useRef(null);
+      const commentModalRef = useRef(null);
+
+  
+
+      useEffect(() => {
+
+        gsap.set(vibeRef.current, { opacity: 0 }); // Ensure it starts as hidden
+
+
+        setTimeout(() => {
+          if (vibeRef.current) {
+            gsap.fromTo(
+              vibeRef.current,
+              { opacity: 0 },
+              { opacity: 1, duration: 2, ease: "power2.inOut" }
+            );
+          }
+        }, 100); // Small delay
+      }, []);
 
   const [vibe, setVibe] = useState({});
   const [likes, setLikes] = useState([]);
@@ -39,6 +66,16 @@ const Vibe = ({ loggedUser }) => {
     setNewComment(INITIAL_COMMENT);
     setModalState(true);
   };
+
+  useEffect(() => {
+    if (modalState && commentModalRef.current) {
+      gsap.fromTo(
+        commentModalRef.current,
+        { opacity: 0, scale: 0.8 },
+        { opacity: 1, scale: 1, duration: 0.5, ease: "power2.out" }
+      );
+    }
+  }, [modalState]);
 
   useEffect(() => {
     fetch(`http://localhost:8080/api/vibe/${vibeId}`).then((res) =>
@@ -76,6 +113,7 @@ const Vibe = ({ loggedUser }) => {
   if (!loaded) {
     return null;
   }
+
 
   function timeAgo(date) {
     const seconds = Math.floor((new Date() - new Date(date)) / 1000);
@@ -233,7 +271,7 @@ const Vibe = ({ loggedUser }) => {
 
   return (
     <div className="vibeContainer d-flex flex-row align-items-center justify-content-center">
-      <div className="vibeContainerMain d-flex flex-column align-items-center justify-content-center">
+      <div className="vibeContainerMain d-flex flex-column align-items-center justify-content-center " ref={vibeRef}>
         <div className="musicPlayerBackground ">
           <MusicPlayer audioUrl={vibe.songUrl} />
         </div>
@@ -275,27 +313,30 @@ const Vibe = ({ loggedUser }) => {
         </div>
 
         <div className="vibeContainerMainImgCom">
-          <div className={modalState ? "commentsModal" : "commentsModalclosed"}>
-            <div className="modalHeader">
-              <h2 className="text-white"> {editingCommentId ? "Edit a comment" : "Add a comment"}</h2>
+          <div className={modalState ? "commentsModal" : "commentsModalclosed"}   ref={commentModalRef}
+          >
+            <div className="modalHeader d-flex flex-row align-items-center justify-content-center">
+              <h2 className="text-center"> {editingCommentId ? "Edit a comment" : "Add a comment"}</h2>
             </div>
             <input
-              className="commentInput whiteBackground"
+              className="form-control w-50"
               type="text"
               placeholder="Add a comment..."
               name="comment"
               value={newComment.comment}
               onChange={handleChange}
-            />{" "}
+            />
+            <div className="commentsModalButtonsContainer">
             <button
-              className="commentsButton"
+              className="commentsButtonModal"
               onClick={editingCommentId ? submitEditedComment : addComment}
             >
               {editingCommentId ? "Edit" : "Add"}
             </button>
-            <button className="commentsButton" onClick={closeModal}>
+            <button className="commentsButtonModal" onClick={closeModal}>
               Close
             </button>
+            </div>
           </div>
           <img className="vibe_image" src={vibe.imageUrl} alt="vibeCardImage" />
           <div className="commentsContainer">

@@ -12,6 +12,7 @@ import VibesList from './Components/VibesList';
 import MyVibesList from './Components/MyVibesList';
 import Vibe from './Components/Vibe';
 import EditVibeForm from './Components/EditVibeForm';
+import CreateVibeForm from './Components/CreateVibeForm';
 
 function App() {
 
@@ -42,6 +43,8 @@ function App() {
         <Route path="/myVibes" element={<MyVibesList loggedUser={loggedUser}/> } />
         <Route path="/vibe/:vibeId" element={<Vibe loggedUser={loggedUser}/>} />
         <Route path='/vibe/:vibeId/edit' element={<EditVibeForm loggedUser={loggedUser}/>}  />
+        <Route path='/vibe/create' element={<CreateVibeForm loggedUser={loggedUser}/>}  />
+
       </Routes>
     </Router>
   )

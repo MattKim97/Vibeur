@@ -2,8 +2,32 @@ import React, { useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useEffect } from 'react';
 import "../VibeForms.css";
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useRef } from 'react';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const EditVibeForm = ({loggedUser}) => {
+    const formRef = useRef(null);
+
+
+
+      useEffect(() => {
+        console.log(formRef.current)
+        gsap.set(formRef.current, { opacity: 0 }); // Ensure it starts as hidden
+
+
+        setTimeout(() => {
+          if (formRef.current) {
+            gsap.fromTo(
+              formRef.current,
+              { opacity: 0 },
+              { opacity: 1, duration: 2, ease: "power2.inOut" }
+            );
+          }
+        }, 100); // Small delay
+      }, []);
 
   const { vibeId } = useParams();
 
@@ -52,12 +76,14 @@ const EditVibeForm = ({loggedUser}) => {
     return null;
   }
 
+  
+
 
   return (
     
 
-    <div className='d-flex flex-column align-items-center justify-content-center'>
-      <form onSubmit={handleSubmit} className='vibeFormContainer'>
+    <div className='d-flex flex-column align-items-center justify-content-center opacityContainer' ref={formRef}>
+      <form onSubmit={handleSubmit} className='vibeFormContainer' >
       <h1>Edit Vibe Form</h1>
         <label>
           Title:
@@ -79,8 +105,8 @@ const EditVibeForm = ({loggedUser}) => {
            />
         </label>
         <div className='vibeFormButtonsContainer'>
-        <button type="submit">Save Changes</button>
-        <button type="button" onClick={() => navigate("/vibes")}>Cancel</button>
+        <button type="submit" className='vibeFormButton'>Edit</button>
+        <button type="button"className='vibeFormButton' onClick={() => navigate("/vibes")}>Cancel</button>
         </div>
       </form>
     </div>

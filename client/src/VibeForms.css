@@ -13,7 +13,7 @@
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    padding: 20px;
+    padding: 80px 20px;
     border-radius: 8px;
     background-color: #f9f9f9;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -22,7 +22,33 @@
 
 .vibeFormButtonsContainer{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
     margin-top: 20px;
     width: 100%;
 }
+
+.opacityContainer{
+    opacity: 0;
+}
+
+.vibeFormButton{
+    background-color: #e73c7e;
+    color: white;
+    border: 1px solid white;
+    width: 15%;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.6s, color 0.6s;
+    font-size: 16px;
+    padding: 10px 30px;
+    border-radius: 5px;
+
+  }
+  
+  .vibeFormButton:hover{
+    background-color: white;
+    border: 1px solid #e73c7e;
+    color: #e73c7e;
+  }

@@ -140,7 +140,7 @@ const EditProfilePic = ({ loggedUser, setLoggedUser }) => {
 
       <h4 className='mt-2'>Upload a New Profile Picture: </h4>
                         <input
-                            className="file-upload-label mt-1"
+                            className="form-control mt-1"
                             type="file"
                             onChange={handleFileChange}
                             />

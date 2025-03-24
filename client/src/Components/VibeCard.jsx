@@ -31,9 +31,9 @@ if(vibe.title .length > 16){
     (0, 14) + '...'
 }
 
-if(vibe.description.length > 65){
+if(vibe.description.length > 33){
     vibe.description = vibe.description.substring
-    (0, 65) + '...'
+    (0, 33) + '...'
 }
 
 function timeAgo(date) {

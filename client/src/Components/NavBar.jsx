@@ -52,6 +52,11 @@ const NavBar = ({ loggedUser, setLoggedUser }) => {
                 Browse
               </Link>
             </li>
+            {loggedUser != null ?   <li className="nav-item">
+              <Link className="nav-link text-white" to="/vibe/create">
+                Upload a Vibe
+              </Link>
+            </li> : null}
           </ul>
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <div className="d-flex flex-row align-items-center">
