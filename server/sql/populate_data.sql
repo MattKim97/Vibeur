@@ -19,8 +19,8 @@ insert into mood(mood_name) values('excited');
 
 insert into `user`(username, userImageUrl, `password`) values
 ('user1', "https://vibeur.s3.us-west-1.amazonaws.com/iStock-1232014586.jpg" , '$2a$12$UdGkEgH6zB/Ws7fRs6DlZO1xgtjczIc7a6yCs43qANeB2zsE20cRK'),
-('user2', null , '$2a$12$UdGkEgH6zB/Ws7fRs6DlZO1xgtjczIc7a6yCs43qANeB2zsE20cRK'),
-('user3', null , '$2a$12$UdGkEgH6zB/Ws7fRs6DlZO1xgtjczIc7a6yCs43qANeB2zsE20cRK'),
+('user2', "https://vibeur.s3.us-west-1.amazonaws.com/snoopy.jpg" , '$2a$12$UdGkEgH6zB/Ws7fRs6DlZO1xgtjczIc7a6yCs43qANeB2zsE20cRK'),
+('user3', "https://vibeur.s3.us-west-1.amazonaws.com/stitch.jpg" , '$2a$12$UdGkEgH6zB/Ws7fRs6DlZO1xgtjczIc7a6yCs43qANeB2zsE20cRK'),
 ('user4', null , 'password4'),
 ('user5', null , 'password5'),
 ('user6', null , 'password6'),
@@ -54,7 +54,8 @@ insert into vibe(title, `description`, imageUrl, songUrl, dateUploaded, user_id,
 ('Depresso', 'Feeling a bit down today, just want a cup of coffee', 'https://vibeur.s3.us-west-1.amazonaws.com/MotleyFool-TMOT-6ce98652-steaming-coffee-cup.webp', 'https://vibeur.s3.us-west-1.amazonaws.com/John+Mayer+-+Slow+Dancing+In+A+Burning+Room+(Lyrics).mp3', '2025-03-16-14-24-55', 2, 2),
 ('Fed Up and Fired Up', "I'm at my limit. Tired of biting my tongue, tired of holding back.", 'https://vibeur.s3.us-west-1.amazonaws.com/furious-frustated-businessman-hitting-computer-600nw-200466014.webp', 'https://vibeur.s3.us-west-1.amazonaws.com/Rage+against+the+machine+-+Killing+in+the+name+Lyrics.mp3', '2025-03-15-22-33-51', 3, 3),
 ('Just chilling', 'Been a long day just gonna sit back and contemplate', 'https://vibeur.s3.us-west-1.amazonaws.com/new+relaxed.jpg', 'https://vibeur.s3.us-west-1.amazonaws.com/Headphone+Activist+-+Haiku.mp3', '2025-03-19-10-17-52', 1, 4),
-('Happiness', 'Feeling happy, just wanna share some positivity!', 'https://vibeur.s3.us-west-1.amazonaws.com/happiness-pictures-arrv7cf98wd6u0lm.jpg', 'https://vibeur.s3.us-west-1.amazonaws.com/Redbone+-+Come+and+Get+Your+Love+(Lyrics)+Guardians+of+the+Galaxy.mp3', '2025-03-10-10-17-52', 1, 1);
+('Happiness', 'Feeling happy, just wanna share some positivity!', 'https://vibeur.s3.us-west-1.amazonaws.com/happiness-pictures-arrv7cf98wd6u0lm.jpg', 'https://vibeur.s3.us-west-1.amazonaws.com/Redbone+-+Come+and+Get+Your+Love+(Lyrics)+Guardians+of+the+Galaxy.mp3', '2025-03-10-10-17-52', 1, 1),
+('Dance with me!', "This song always makes me wanna dance!", "https://vibeur.s3.us-west-1.amazonaws.com/SNOOPEH.jpg","https://vibeur.s3.us-west-1.amazonaws.com/Jackson+5+-+I+Want+You+Back+(Lyric+Video).mp3", '2025-03-24-10-17-52', 2, 1);
 
 insert into `comment`(content, dateCreated, isEdited, user_id, vibe_id) values
 ('This is a great vibe!', '2025-03-17-10-17-52', false, 2, 1),
@@ -66,7 +67,9 @@ insert into `comment`(content, dateCreated, isEdited, user_id, vibe_id) values
 ('This is so relatable', '2025-03-19-10-17-52', false, 1, 4),
 ('Thanks needed this', '2025-03-19-10-17-52', false, 3, 4),
 ('Love the positivity', '2025-03-10-10-17-52', false, 1, 5),
-('This made my day!', '2025-03-10-10-17-52', false, 3, 5);
+('This made my day!', '2025-03-10-10-17-52', false, 3, 5),
+("I love dancing!", '2025-03-25-10-17-52', false, 1, 6),
+("This song is a bop!", '2025-03-25-10-17-52', false, 3, 6)
 ;
 
 insert into `like`(user_id, vibe_id) values

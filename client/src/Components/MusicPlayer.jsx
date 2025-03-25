@@ -18,13 +18,14 @@ const MusicPlayer = ({ audioUrl }) => {
     setAudioContext(context);
   
     const analyser = context.createAnalyser();
-    analyser.fftSize = 256;
-    const source = context.createMediaElementSource(audio);
+    analyser.fftSize = 512;    const source = context.createMediaElementSource(audio);
     source.connect(analyser);
     analyser.connect(context.destination);
   
     const bufferLength = analyser.frequencyBinCount;
     const dataArray = new Uint8Array(bufferLength);
+
+
     // find leading zeros of the data array
     // cut off all zeros
     // loop through the array
@@ -37,8 +38,12 @@ const MusicPlayer = ({ audioUrl }) => {
     canvas.height = 350;
   
     const draw = () => {
-      requestAnimationFrame(draw);
       analyser.getByteFrequencyData(dataArray);
+
+      if (dataArray.every((val) => val === 0)) {
+        requestAnimationFrame(draw);
+        return;
+      }
 
 
 
@@ -56,11 +61,37 @@ const MusicPlayer = ({ audioUrl }) => {
       ctx.stroke();
 
       // make a modified version of data array with chopped out zero
+
+
+      // console.log("data array"+ dataArray.length);
+      // const modifiedDataArray = dataArray.filter((val) => val > 0);
+      // console.log("modified array"+ modifiedDataArray.length);
+      //no 0s works but doesn't draw top right quadrant of the circle
+
       
+      let minHeight = 10;
       
+      const maxVal = Math.max(...dataArray) || 1;
+      const getRandom = () => Math.floor(Math.random() * 21) + 25;
+
+      for(let i = 0; i < dataArray.length; i++){
+        if(dataArray[i] === 0){
+          dataArray[i] = getRandom();
+        }
+      }
+
+      if(audioRef.current.paused){
+        dataArray.fill(0);
+      }
+
+      requestAnimationFrame(draw);
+
+      
+
+
       for (let i = 0; i < barCount; i++) {
         const angle = (i / barCount) * Math.PI * 2;
-        const barHeight = (dataArray[i] / 255) * 50 + 10;
+        let barHeight = Math.max(((dataArray[i] / maxVal) * 50) + minHeight, minHeight);
         const x1 = centerX + Math.cos(angle) * radius;
         const y1 = centerY + Math.sin(angle) * radius;
         const x2 = centerX + Math.cos(angle) * (radius + barHeight);
