@@ -18,9 +18,9 @@ insert into mood(mood_name) values('relaxed');
 insert into mood(mood_name) values('excited');
 
 insert into `user`(username, userImageUrl, `password`) values
-('user1', "https://vibeur.s3.us-west-1.amazonaws.com/iStock-1232014586.jpg" , '$2a$12$UdGkEgH6zB/Ws7fRs6DlZO1xgtjczIc7a6yCs43qANeB2zsE20cRK'),
-('user2', "https://vibeur.s3.us-west-1.amazonaws.com/snoopy.jpg" , '$2a$12$UdGkEgH6zB/Ws7fRs6DlZO1xgtjczIc7a6yCs43qANeB2zsE20cRK'),
-('user3', "https://vibeur.s3.us-west-1.amazonaws.com/stitch.jpg" , '$2a$12$UdGkEgH6zB/Ws7fRs6DlZO1xgtjczIc7a6yCs43qANeB2zsE20cRK'),
+('FrogLuver', "https://vibeur.s3.us-west-1.amazonaws.com/iStock-1232014586.jpg" , '$2a$12$UdGkEgH6zB/Ws7fRs6DlZO1xgtjczIc7a6yCs43qANeB2zsE20cRK'),
+('Snoopy', "https://vibeur.s3.us-west-1.amazonaws.com/snoopy.jpg" , '$2a$12$UdGkEgH6zB/Ws7fRs6DlZO1xgtjczIc7a6yCs43qANeB2zsE20cRK'),
+('Stitch', "https://vibeur.s3.us-west-1.amazonaws.com/stitch.jpg" , '$2a$12$UdGkEgH6zB/Ws7fRs6DlZO1xgtjczIc7a6yCs43qANeB2zsE20cRK'),
 ('user4', null , 'password4'),
 ('user5', null , 'password5'),
 ('user6', null , 'password6'),
@@ -156,8 +156,21 @@ insert into `like`(user_id, vibe_id) values
 (12,5),
 (13,5),
 (14,5),
-(15,5);
-;
+(15,5),
+(5,6),
+(6,6),
+(7,6),
+(8,6),
+(9,6),
+(10,6),
+(11,6),
+(12,6),
+(13,6),
+(14,6),
+(15,6),
+(16,6),
+(17,6),
+(30,6);
 
 
 
