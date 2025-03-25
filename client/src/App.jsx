@@ -49,7 +49,7 @@ function App() {
     <Router>
       <NavBar loggedUser={loggedUser} setLoggedUser={setLoggedUser}/>
       <Routes>
-        <Route path="/" element={<Landing />} />
+        <Route path="/" element={<Landing  loggedUser={loggedUser}/>} />
         <Route path="/editProfile" element={  loggedUser === null ? 
           <Navigate to="/NotFound" /> :
           <EditProfilePic loggedUser={loggedUser} setLoggedUser={setLoggedUser}/> 

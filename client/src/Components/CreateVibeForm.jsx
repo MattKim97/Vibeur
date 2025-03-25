@@ -170,50 +170,56 @@ const CreateVibeForm = ({loggedUser}) => {
             ))}
           </ul>
         )}
-        <label htmlFor="title">Title</label>
+        <label>Title:
         <input
           type="text"
           name="title"
           id="title"
-          className="form-control"
+          className="form-control vibeFormInput"
+          placeholder="Your title here..."
           value={vibe.title}
           onChange={(e) => setVibe({ ...vibe, title: e.target.value })}
         />
+        </label>
 
-        <label htmlFor="description">Description</label>
+        <label>Description:
         <input
           type="text"
           name="description"
           id="description"
-          className="form-control"
+          className="form-control vibeFormInput"
           value={vibe.description}
+          placeholder="Your description here..."
           onChange={(e) => setVibe({ ...vibe, description: e.target.value })}
         />
+         </label>
 
-        <label htmlFor="imageUrl">Image URL</label>
+        <label>Image URL: 
         <input
           type="file"
           name="imageUrl"
           id="imageUrl"
-          className="form-control"
+          className="form-control vibeFormInput"
         onChange={handleFileChange}
         />
+        </label>
 
-        <label htmlFor="songUrl">Song URL</label>
+        <label>Song URL: 
         <input
           type="file"
           name="songUrl"
           id="songUrl"
-          className="form-control"
+          className="form-control vibeFormInput"
         onChange={handleSongFileChange}
         />
+        </label>
 
-        <label htmlFor="mood">Mood</label>
+        <label>Mood: 
         <select
           name="mood"
           id="mood"
           value={vibe.mood.moodId}
-          className="form-control"
+          className="form-control vibeFormInput"
           onChange={(e) =>
             setVibe({ ...vibe, mood: { moodId: e.target.value } })
           }
@@ -225,6 +231,7 @@ const CreateVibeForm = ({loggedUser}) => {
           <option value={4}>Relaxed</option>
           <option value={5}>Excited</option>
         </select>
+        </label>
 
 <div className="vibeFormButtonsContainer">
         <button type="submit" className="vibeFormButton mt-3">Create</button>

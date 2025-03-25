@@ -129,7 +129,7 @@ const EditProfilePic = ({ loggedUser, setLoggedUser }) => {
 
   return (
     <div className='mt-5 container d-flex flex-column align-items-center justify-content-center'>
-      <div className="edit_profile_border bg-light" ref={formRef}>
+      <div className="edit_profile_border editProfilePicContainer" ref={formRef}>
       <div className="d-flex flex-column align-items-center">
       {errors.length > 0 && <ul id="errors" className='error'>
                             {errors.map(error => <li className="me-4" key={error}>{error}</li>)}
