@@ -1,18 +1,58 @@
 @import url(http://fonts.googleapis.com/css?family=Calibri:400,300,700);
 
-.comment-widgets{
+.comment-widgets {
   height: 300px;
   overflow-y: scroll;
 }
-.comment-widgets.comment-row{border-bottom: 1px solid transparent;padding: 14px;display: -webkit-box;display: -ms-flexbox;display: flex;margin: 10px 0}.p-2{padding: 0.5rem !important}.comment-text{padding-left: 15px}.w-100{width: 100% !important}.m-b-15{margin-bottom: 15px}.btn-sm{padding: 0.25rem 0.5rem;font-size: 0.76563rem;line-height: 1.5;border-radius: 1px}.btn-cyan{color: #fff;background-color: #27a9e3;border-color: #27a9e3}.btn-cyan:hover{color: #fff;background-color: #1a93ca;border-color: #198bbe}
-.comment-widgets .comment-row:hover{background: rgba(0, 0, 0, 0.05)}
-
+.comment-widgets.comment-row {
+  border-bottom: 1px solid transparent;
+  padding: 14px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 10px 0;
+}
+.p-2 {
+  padding: 0.5rem !important;
+}
+.comment-text {
+  padding-left: 15px;
+}
+.w-100 {
+  width: 100% !important;
+}
+.m-b-15 {
+  margin-bottom: 15px;
+}
+.btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.76563rem;
+  line-height: 1.5;
+  border-radius: 1px;
+}
+.btn-cyan {
+  color: #fff;
+  background-color: #27a9e3;
+  border-color: #27a9e3;
+}
+.btn-cyan:hover {
+  color: #fff;
+  background-color: #1a93ca;
+  border-color: #198bbe;
+}
+.comment-widgets .comment-row:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
 
 .vibeContainerMain {
-   backdrop-filter: blur(7px); 
+  backdrop-filter: blur(7px);
   -webkit-backdrop-filter: blur(7px);
-  background: linear-gradient(0deg, rgba(40,44,52,1) 0%, rgba(17,0,32,.5) 100%);
-  border-radius: .7rem;
+  background: linear-gradient(
+    0deg,
+    rgba(40, 44, 52, 1) 0%,
+    rgba(17, 0, 32, 0.5) 100%
+  );
+  border-radius: 0.7rem;
   box-shadow: 0 7px 20px 5px #00000088;
   height: 100%;
   width: 90%;
@@ -35,17 +75,14 @@
   z-index: -1; /* Ensure it stays in the background */
 }
 
-
-
-.textSizePVibe{
+.textSizePVibe {
   font-size: 24px;
 }
 
-.commentsContainer{
+.commentsContainer {
   width: 300px;
   height: auto;
-  background-color: #198bbe;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   margin-left: 1%;
 }
 
@@ -56,37 +93,41 @@
   max-height: 30%;
 }
 
-.card{
-  background-color: whitesmoke;
-  border-radius: .5rem;
+.card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px); 
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.6); 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  border-radius: .7rem;
+  box-shadow: 0 7px 20px 5px #00000088;
   margin-bottom: 1rem;
-  height : 100%
+  height: 100%;
 }
 
-.comments_user_image{
+.comments_user_image {
   border-radius: 100%;
   width: 55px;
   height: 55px;
   object-fit: cover;
 }
 
-
-
-.vibe_user_image{
+.vibe_user_image {
   border-radius: 100%;
   width: 55px;
   height: 55px;
   object-fit: cover;
 }
 
-.vibe_image{
-  border-radius: .5rem;
+.vibe_image {
+  border-radius: 0.5rem;
   height: 400px;
   width: 400px;
   object-fit: cover;
 }
 
-.userButton{
+.userButton {
   background-color: #e73c7e;
   color: white;
   border: 1px solid #e73c7e;
@@ -97,14 +138,13 @@
   transition: background-color 0.6s, color 0.6s;
 }
 
-.userButton:hover{
+.userButton:hover {
   background-color: white;
   color: #e73c7e;
   border: 1px solid #e73c7e;
 }
 
-
-.commentsButton{
+.commentsButton {
   background-color: #e73c7e;
   color: white;
   width: 50%;
@@ -114,34 +154,33 @@
   transition: background-color 0.6s, color 0.6s;
 }
 
-.commentsButton:hover{
+.commentsButton:hover {
   background-color: white;
   color: #e73c7e;
   border: 1px solid #e73c7e;
-
 }
 
-.descriptionLikesContainer{
-  color : black;
+.descriptionLikesContainer {
+  color: black;
   margin-bottom: 10px;
   width: 50%;
   border-radius: 5px;
   text-align: center;
   background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(10px); 
+  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.3); 
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-  border-radius: .7rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 0.7rem;
   box-shadow: 0 7px 20px 5px #00000088;
 }
 
-.pxFont24{
+.pxFont24 {
   font-size: 24px;
 }
 
-.commentsButtonModal{
+.commentsButtonModal {
   background-color: #e73c7e;
   color: white;
   border: 1px solid #e73c7e;
@@ -151,49 +190,48 @@
   padding: 10px 30px;
   border-radius: 5px;
   transition: background-color 0.6s, color 0.6s;
-
 }
 
-.commentsButtonModal:hover{
+.commentsButtonModal:hover {
   background-color: white;
   color: #e73c7e;
   border: 1px solid #e73c7e;
 }
 
-.commentsModal{
+.commentsModal {
   background-color: white;
   position: fixed; /* Ensures it stays in place while scrolling */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%); /* Centers it perfectly */
   margin-top: 1em;
-    padding: 1rem 2rem;
-    cursor: pointer;
-    border: none;
-    background: rgba(255, 255, 255, 0.2);
-    border: solid 1px rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(20px);
-    font-family: 'Poppins';
-    font-weight: 500;
-    font-size: 1rem;
-    z-index: 100; 
-    border-radius: 10px;
-    width: 40%;
-    height: 40%;
-    gap: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  border: solid 1px rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  font-family: "Poppins";
+  font-weight: 500;
+  font-size: 1rem;
+  z-index: 100;
+  border-radius: 10px;
+  width: 40%;
+  height: 40%;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.commentsModalclosed{
+.commentsModalclosed {
   display: none;
   visibility: hidden;
   background-color: white;
 }
 
-.commentsModalButtonsContainer{
+.commentsModalButtonsContainer {
   display: flex;
   flex-direction: row;
   justify-content: center;

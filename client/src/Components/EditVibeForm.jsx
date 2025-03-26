@@ -97,7 +97,7 @@ const EditVibeForm = ({loggedUser}) => {
           value={vibe.title}
           name="title"
           onChange={handleChange}
-          className='form-control vibeFormInput'
+          className='vibeFormInput form-control'
           />
         </label>
         <br />

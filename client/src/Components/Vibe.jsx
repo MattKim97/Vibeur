@@ -392,7 +392,8 @@ const Vibe = ({ loggedUser }) => {
             />
           </div>
           <p className="text-white">
-            <ins>Vibe by: </ins>{" "}
+            <ins>Vibe by</ins>
+            <span>: </span>
             {vibe && vibe.user ? vibe.user.username : "Unknown"}
           </p>
           {vibe?.user?.userId === loggedUser?.userId ? (

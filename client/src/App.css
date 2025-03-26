@@ -275,3 +275,14 @@ body {
 .changeToPointer{
   cursor: pointer;
 }
+
+.editProfilePicContainer{
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px); 
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.6); 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  border-radius: .7rem;
+  box-shadow: 0 7px 20px 5px #00000088;
+}

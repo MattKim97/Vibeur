@@ -31,13 +31,13 @@ if(vibe.title .length > 16){
     (0, 14) + '...'
 }
 
-if(vibe.description.length > 33){
+if(vibe.description.length > 29){
     vibe.description = vibe.description.substring
-    (0, 33) + '...'
+    (0, 29) + '...'
 }
 
 function timeAgo(date) {
-    const seconds = Math.floor((new Date() - new Date(date)) / 1000);
+    const seconds = Math.floor((new Date() - new Date(date)) / 1000) + 2;
 
     if (seconds < 60) return `${seconds}s ago`;
     const minutes = Math.floor(seconds / 60);
@@ -72,7 +72,7 @@ function timeAgo(date) {
       <hr />
       <div className='user'>
         <div className='wrapper'>
-          <img src={vibe != null && vibe.user.userImageUrl != null ? vibe.user.userImageUrl : anonymous} alt="userImg" />
+          <img src={vibe != null && vibe.user.userImageUrl != "" ? vibe.user.userImageUrl : anonymous} alt="userImg" />
         </div>
         <p className='text-white'><ins>Vibe by: </ins> {vibe.user.username}</p>
       </div>
