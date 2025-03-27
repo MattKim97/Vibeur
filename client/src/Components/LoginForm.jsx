@@ -109,8 +109,6 @@ const LoginForm = ({setLoggedUser}) => {
         }));
     }
 
-	console.log(file)
-	console.log(user)
 
 	const handleFileChange = (e) => {
 		const file = e.target.files[0];

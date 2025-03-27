@@ -14,7 +14,6 @@ const EditVibeForm = ({loggedUser}) => {
 
 
       useEffect(() => {
-        console.log(formRef.current)
         gsap.set(formRef.current, { opacity: 0 }); // Ensure it starts as hidden
 
 
@@ -74,10 +73,7 @@ const EditVibeForm = ({loggedUser}) => {
     return null;
   }
 
-  console.log(vibe);
 
-  console.log("vibeId"+ vibe.user.userId);
-  console.log("userId" + loggedUser.userId);
 
   if(loggedUser && loggedUser.userId != vibe.user.userId){
     navigate("/NotFound");
