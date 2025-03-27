@@ -156,8 +156,7 @@ user_id integer > fk references user.user_id
 ## Frontend
 - React
 - JSX
-- Howler.JS
-- AudioMotion
+- Bootstrap
 - GSAC animation library
 
 # HTTP Endpoints
