@@ -267,7 +267,6 @@ const Vibe = ({ loggedUser }) => {
       break;
   }
 
-  console.log(newComment);
 
   return (
     <div className="vibeContainer d-flex flex-row align-items-center justify-content-center">

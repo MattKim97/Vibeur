@@ -42,7 +42,6 @@ function App() {
     return null;
   }
 
-  console.log(loggedUser)
 
 
   return (

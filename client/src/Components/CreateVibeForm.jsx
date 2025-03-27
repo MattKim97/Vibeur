@@ -47,7 +47,6 @@ const CreateVibeForm = ({loggedUser}) => {
     return `https://${S3_BUCKET_IMAGE}.s3.${REGION}.amazonaws.com/${fileName}`;
   };
 
-  console.log(vibe);
 
   const uploadFile = async (file) => {
     const S3_BUCKET = S3_BUCKET_IMAGE;
@@ -115,7 +114,6 @@ const CreateVibeForm = ({loggedUser}) => {
           vibe.songUrl = songUrl;
         }
 
-        console.log(vibe);
         fetch("http://localhost:8080/api/vibe", {
           method: "POST",
           headers: {
@@ -127,7 +125,6 @@ const CreateVibeForm = ({loggedUser}) => {
         .then( response => {
             if (response.status >= 200 && response.status < 300) {
                 response.json().then((createdVibe) => {
-                    console.log(createdVibe)
                     navigate(`/vibe/${createdVibe.vibeId}`);
                 });
             }else {

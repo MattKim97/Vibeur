@@ -93,15 +93,11 @@ const EditProfilePic = ({ loggedUser, setLoggedUser }) => {
 			imageUrl = await uploadFile(); 
 		}
 
-    console.log(imageUrl)
 
     const updatedUser = {
 			...loggedUser,
 			userImageUrl: imageUrl,
 		};
-
-    console.log(loggedUser)
-    console.log(updatedUser)
 
     fetch(`http://localhost:8080/api/user/${loggedUser.userId}`, {
       method: "PUT",
