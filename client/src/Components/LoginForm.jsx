@@ -210,7 +210,7 @@ const LoginForm = ({setLoggedUser}) => {
                         />
                         <p className='login_p'>Upload a Profile Picture (Optional): </p>
                         <input
-                            className="file-upload-label"
+                            className="form-control"
                             type="file"
                             onChange={handleFileChange}
                         />
